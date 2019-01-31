@@ -274,17 +274,15 @@
       
         <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>光说不能行，先扔个代码：<a href="https://github.com/zhzye/data-structure/tree/master/array" target="_blank" rel="noopener">https://github.com/zhzye/data-structure/tree/master/array</a></p>
 <p>然后我们再来BB：</p>
+<p>int[] arr = new int[10];<br>int[] arr = new int[]{1, 2, 3, 4};</p>
 <ul>
-<li>int[] arr = new int[10];</li>
-<li>int[] arr = new int[]{1, 2, 3, 4};</li>
-<li>数组最大的优点<ul>
+<li><p>数组最大的优点</p>
+<ul>
 <li>快速查询<ul>
 <li>arr[2]</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>数组最好引用于“索引有语义”的情况<ul>
+<li>数组最好引用于“索引有语义”的情况</li>
 <li>不是所有的语义索引都适用<ul>
 <li>身份证号<ul>
 <li>开辟的空间太大</li>
@@ -292,19 +290,19 @@
 </li>
 </ul>
 </li>
+<li>封装一个数组<ul>
+<li><img src="/images/2019/01/31/ee82b340-255d-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190131 下午5.30.16.png"></li>
 </ul>
 </li>
 </ul>
-<h3 id="封装一个数组"><a href="#封装一个数组" class="headerlink" title="封装一个数组"></a>封装一个数组</h3><p><img src="/images/2019/01/31/db2cfbc0-253a-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190131 下午5.30.16.png"></p>
-<ul>
+</li>
 <li><p>问题</p>
 <ul>
 <li>索引没有语意，如何表示没有元素？</li>
 <li>如何添加元素？如何删除元素？</li>
 </ul>
 </li>
-<li><p>Array</p>
-<ul>
+<li>Array<ul>
 <li>capacity<ul>
 <li>容量</li>
 </ul>
@@ -326,10 +324,10 @@
 <li>依赖Object做强制类型转换的方式</li>
 </ul>
 </li>
+<li>当用泛型的时候，如果判断相等<ul>
+<li>不能像是基础数据类型一样，使用==，要使用equals<del>中划线</del></li>
 </ul>
 </li>
-<li>当用泛型的时候，如果判断相等<ul>
-<li>不能像是基础数据类型一样，使用<code>==</code>，要使用<code>equals~~中划线~~</code></li>
 </ul>
 </li>
 </ul>
@@ -339,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/01/31/base-structure/" data-id="cjrk8sj6d0006r360bpai5hxx" class="article-share-link">Share</a>
+      <a data-url="http://zhzye.github.io/2019/01/31/base-structure/" data-id="cjrko18rw0016r360s5ckbjz6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li></ul>
