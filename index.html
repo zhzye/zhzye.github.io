@@ -100,10 +100,11 @@
 <p>如果说是一个Int类型的Array，在做删除的时候，我只是需要做index偏移就可以了，因为通过size的index指向了当前Array的最后存储的值得下一个，我只是做size的偏移，就不会再Array中访问到了，也就是做了删除，但是真实的值还是在我的int静态数组中存储中；</p>
 <p>但是，为了通用性，把Int换成了E的泛型哪？会怎么样？</p>
 <p>泛型就不是基础数据类型，而是引用，如果说静态数组中的引用不被删除，那么这个引用指向的数据类型所占用的内存会释放吗？</p>
-<p>答案是：不会！最简单让垃圾回收的方式是，设置当前引用为null。</p>
+<p>答案是：不会！最简单让垃圾回收的方式是，设置当前引用为null。<br>这种对象被称为：loitering objects</p>
 <p>这就是我们今天说的垃圾回收GC。</p>
 <h1 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h1><ul>
 <li>java gc</li>
+<li>loitering objects</li>
 </ul>
 
       
@@ -314,6 +315,25 @@
 </li>
 </ul>
 </li>
+<li>实现<ul>
+<li>创建元素和删除元素在指定位置是难点<ul>
+<li>要考虑验证边界</li>
+<li>在做偏移移动出一个空位或者删除一个空位，要做n次移动</li>
+</ul>
+</li>
+<li>当用泛型的时候，如果new一个数组<ul>
+<li>(E[])new Object[length];<ul>
+<li>依赖Object做强制类型转换的方式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>当用泛型的时候，如果判断相等<ul>
+<li>不能像是基础数据类型一样，使用<code>==</code>，要使用<code>equals~~中划线~~</code></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
       
@@ -322,7 +342,7 @@
       <a data-url="http://zhzye.github.io/2019/01/31/base-structure/" data-id="cjrk8sj6d0006r360bpai5hxx" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li></ul>
 
     </footer>
   </div>
