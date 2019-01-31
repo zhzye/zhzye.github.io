@@ -5,19 +5,20 @@
   
 
   
-  <title>Archives: 2019/1 | 知乎者爷</title>
+  <title>spring aop | 知乎者爷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2019主攻Java">
+  <meta name="description" content="aop 概述 aspect oriented programming 预编译方式和运行期动态代理实现程序功能的统一维护的一种技术 oop延续，函数式变成的一种衍生范型 隔离业务逻辑各个部分，降低耦合度，提升程序的可重用性 采取横向抽取机制，取代了传统纵向继承体系重复性代码（性能检测、事务管理、安全检查、缓存） 使用横向抽取代替纵向继承 Spring AOP使用java实现，不需要专门的编译过程和类">
 <meta name="keywords" content="java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="知乎者爷">
-<meta property="og:url" content="http://zhzye.github.io/archives/2019/01/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring aop">
+<meta property="og:url" content="http://zhzye.github.io/2019/01/31/spring-aop/index.html">
 <meta property="og:site_name" content="知乎者爷">
-<meta property="og:description" content="2019主攻Java">
+<meta property="og:description" content="aop 概述 aspect oriented programming 预编译方式和运行期动态代理实现程序功能的统一维护的一种技术 oop延续，函数式变成的一种衍生范型 隔离业务逻辑各个部分，降低耦合度，提升程序的可重用性 采取横向抽取机制，取代了传统纵向继承体系重复性代码（性能检测、事务管理、安全检查、缓存） 使用横向抽取代替纵向继承 Spring AOP使用java实现，不需要专门的编译过程和类">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-31T04:37:19.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="知乎者爷">
-<meta name="twitter:description" content="2019主攻Java">
+<meta name="twitter:title" content="spring aop">
+<meta name="twitter:description" content="aop 概述 aspect oriented programming 预编译方式和运行期动态代理实现程序功能的统一维护的一种技术 oop延续，函数式变成的一种衍生范型 隔离业务逻辑各个部分，降低耦合度，提升程序的可重用性 采取横向抽取机制，取代了传统纵向继承体系重复性代码（性能检测、事务管理、安全检查、缓存） 使用横向抽取代替纵向继承 Spring AOP使用java实现，不需要专门的编译过程和类">
   
     <link rel="alternate" href="/atom.xml" title="知乎者爷" type="application/atom+xml">
   
@@ -68,135 +69,93 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/31/java开发神器/" class="archive-article-date">
-  <time datetime="2019-01-31T06:37:23.000Z" itemprop="datePublished">Jan 31</time>
+        <section id="main"><article id="post-spring-aop" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/31/spring-aop/" class="article-date">
+  <time datetime="2019-01-31T03:05:29.000Z" itemprop="datePublished">2019-01-31</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/31/java开发神器/">java开发神器</a>
+    <h1 class="article-title" itemprop="name">
+      spring aop
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/31/base-structure/" class="archive-article-date">
-  <time datetime="2019-01-31T05:16:43.000Z" itemprop="datePublished">Jan 31</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/31/base-structure/">数据结构</a>
-    </h1>
-  
+        <h2 id="aop"><a href="#aop" class="headerlink" title="aop"></a>aop</h2><ul>
+<li>概述<ul>
+<li>aspect oriented programming</li>
+<li>预编译方式和运行期动态代理实现程序功能的统一维护的一种技术</li>
+<li>oop延续，函数式变成的一种衍生范型</li>
+<li>隔离业务逻辑各个部分，降低耦合度，提升程序的可重用性</li>
+<li>采取横向抽取机制，取代了传统纵向继承体系重复性代码（性能检测、事务管理、安全检查、缓存）</li>
+<li>使用横向抽取代替纵向继承</li>
+<li>Spring AOP使用java实现，不需要专门的编译过程和类加载器，在运行期通过代理方式向目标类织入增强代码</li>
+</ul>
+</li>
+<li>底层实现</li>
+<li>传统AOP SPRING<ul>
+<li>不带切入点的切面</li>
+<li>带切入点的切面</li>
+</ul>
+</li>
+<li>传统AOP自动代理<ul>
+<li>基于Bean名称的自动代理</li>
+<li>基于切面信息的自动代理</li>
+</ul>
+</li>
+</ul>
+<h2 id="新的概念"><a href="#新的概念" class="headerlink" title="新的概念"></a>新的概念</h2><ul>
+<li>类加载器</li>
+<li>代理模式</li>
+<li>jdk动态代理</li>
+<li>织入</li>
+<li>横向抽取</li>
+<li>函数式变成</li>
+<li>aspect</li>
+<li>运行期动态代理</li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/31/java-learning/" class="archive-article-date">
-  <time datetime="2019-01-31T04:55:15.000Z" itemprop="datePublished">Jan 31</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/31/java-learning/">java范范的来说</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/31/spring-aop/" class="archive-article-date">
-  <time datetime="2019-01-31T03:05:29.000Z" itemprop="datePublished">Jan 31</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/01/31/spring-aop/" data-id="cjrk938gb0006uv60c6nt3pze" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/31/spring-aop/">spring aop</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/30/java-thread/" class="archive-article-date">
-  <time datetime="2019-01-30T14:47:45.000Z" itemprop="datePublished">Jan 30</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/30/java-thread/">java线程</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/30/hello-world/" class="archive-article-date">
-  <time datetime="2019-01-29T17:53:23.647Z" itemprop="datePublished">Jan 30</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/30/hello-world/">半夜开博客，一定有话要BB</a>
-    </h1>
+    <a href="/2019/01/31/java-learning/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          java范范的来说
+        
+      </div>
+    </a>
   
+  
+    <a href="/2019/01/30/java-thread/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">java线程</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-  
-    </div></section>
-  
-
 
 </section>
         
