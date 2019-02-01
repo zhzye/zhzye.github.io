@@ -5,20 +5,20 @@
   
 
   
-  <title>java-垃圾回收GC | 知乎者爷</title>
+  <title>java-时间复杂度 | 知乎者爷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="是这样的，这个故事从实现一个Array开始说起… 如果说是一个Int类型的Array，在做删除的时候，我只是需要做index偏移就可以了，因为通过size的index指向了当前Array的最后存储的值得下一个，我只是做size的偏移，就不会再Array中访问到了，也就是做了删除，但是真实的值还是在我的int静态数组中存储中； 但是，为了通用性，把Int换成了E的泛型哪？会怎么样？ 泛型就不是基础数">
-<meta name="keywords" content="java,gc,拓展阅读">
+  <meta name="description" content="时间复杂度有区分吗？ 有  O(1) O(n) O(lgn) O(nlgn) O(n^2)  大O描述了算法运行时间和输入数据的关系 看一段代码1234567public int sum(int[] data) &amp;#123;	int sum = 0;        for (int i = 0; i &amp;lt; data.length; i++) &amp;#123;            sum += d">
+<meta name="keywords" content="java,时间复杂度">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java-垃圾回收GC">
-<meta property="og:url" content="http://zhzye.github.io/2019/01/31/java-垃圾回收GC/index.html">
+<meta property="og:title" content="java-时间复杂度">
+<meta property="og:url" content="http://zhzye.github.io/2019/02/01/java-时间复杂度/index.html">
 <meta property="og:site_name" content="知乎者爷">
-<meta property="og:description" content="是这样的，这个故事从实现一个Array开始说起… 如果说是一个Int类型的Array，在做删除的时候，我只是需要做index偏移就可以了，因为通过size的index指向了当前Array的最后存储的值得下一个，我只是做size的偏移，就不会再Array中访问到了，也就是做了删除，但是真实的值还是在我的int静态数组中存储中； 但是，为了通用性，把Int换成了E的泛型哪？会怎么样？ 泛型就不是基础数">
+<meta property="og:description" content="时间复杂度有区分吗？ 有  O(1) O(n) O(lgn) O(nlgn) O(n^2)  大O描述了算法运行时间和输入数据的关系 看一段代码1234567public int sum(int[] data) &amp;#123;	int sum = 0;        for (int i = 0; i &amp;lt; data.length; i++) &amp;#123;            sum += d">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-31T13:20:44.153Z">
+<meta property="og:updated_time" content="2019-02-01T01:15:04.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java-垃圾回收GC">
-<meta name="twitter:description" content="是这样的，这个故事从实现一个Array开始说起… 如果说是一个Int类型的Array，在做删除的时候，我只是需要做index偏移就可以了，因为通过size的index指向了当前Array的最后存储的值得下一个，我只是做size的偏移，就不会再Array中访问到了，也就是做了删除，但是真实的值还是在我的int静态数组中存储中； 但是，为了通用性，把Int换成了E的泛型哪？会怎么样？ 泛型就不是基础数">
+<meta name="twitter:title" content="java-时间复杂度">
+<meta name="twitter:description" content="时间复杂度有区分吗？ 有  O(1) O(n) O(lgn) O(nlgn) O(n^2)  大O描述了算法运行时间和输入数据的关系 看一段代码1234567public int sum(int[] data) &amp;#123;	int sum = 0;        for (int i = 0; i &amp;lt; data.length; i++) &amp;#123;            sum += d">
   
     <link rel="alternate" href="/atom.xml" title="知乎者爷" type="application/atom+xml">
   
@@ -69,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-java-垃圾回收GC" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-java-时间复杂度" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/31/java-垃圾回收GC/" class="article-date">
-  <time datetime="2019-01-31T13:16:57.000Z" itemprop="datePublished">2019-01-31</time>
+    <a href="/2019/02/01/java-时间复杂度/" class="article-date">
+  <time datetime="2019-02-01T00:53:03.000Z" itemprop="datePublished">2019-02-01</time>
 </a>
     
   <div class="article-category">
@@ -87,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      java-垃圾回收GC
+      java-时间复杂度
     </h1>
   
 
@@ -95,24 +95,53 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>是这样的，这个故事从实现一个Array开始说起…</p>
-<p>如果说是一个Int类型的Array，在做删除的时候，我只是需要做index偏移就可以了，因为通过size的index指向了当前Array的最后存储的值得下一个，我只是做size的偏移，就不会再Array中访问到了，也就是做了删除，但是真实的值还是在我的int静态数组中存储中；</p>
-<p>但是，为了通用性，把Int换成了E的泛型哪？会怎么样？</p>
-<p>泛型就不是基础数据类型，而是引用，如果说静态数组中的引用不被删除，那么这个引用指向的数据类型所占用的内存会释放吗？</p>
-<p>答案是：不会！最简单让垃圾回收的方式是，设置当前引用为null。<br>这种对象被称为：loitering objects</p>
-<p>这就是我们今天说的垃圾回收GC。</p>
-<h1 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h1><ul>
-<li>java gc</li>
-<li>loitering objects</li>
+        <h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>有区分吗？</p>
+<p>有</p>
+<ul>
+<li>O(1)</li>
+<li>O(n)</li>
+<li>O(lgn)</li>
+<li>O(nlgn)</li>
+<li>O(n^2)</li>
 </ul>
+<p>大O描述了算法运行时间和输入数据的关系</p>
+<p>看一段代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span>[] data)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span><br><span class="line">            sum += data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>时间复杂度是o(n)<ul>
+<li>n是data中元素的个数</li>
+<li>实际的算法应该是线性的，实际时间T = c1*n + c2<ul>
+<li>忽略常数c1 c2<ul>
+<li>都是o(n)，因为不同语言生成指令不一样，不同cpu执行效率也不一样</li>
+<li>所以我们要忽律常数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>比较<ul>
+<li>渐进时间复杂度：描述的是n趋近于无穷的情况<ul>
+<li>在数据量n小的时候，常数也可以起作用，在优化具体量级算法时候可以考虑进去</li>
+</ul>
+</li>
+<li>算法复杂度分析是关注最坏的情况</li>
+</ul>
+</li>
+</ul>
+<h3 id="均摊时间复杂度"><a href="#均摊时间复杂度" class="headerlink" title="均摊时间复杂度"></a>均摊时间复杂度</h3><p>动态数组的resize（因为要动态改变数组的capacity）的时间复杂度是o(n)，但是对整个性能影响大吗？</p>
+<p>均摊复杂度是将resize中带来的操作次数，平均到每个add操作中，这样，我么相当于操作了2次基本操作，平均下来，时间复杂度还是o（1）</p>
+<p>均摊在这种案例中，比计算最坏情况更有意义</p>
+<h3 id="复杂度震荡"><a href="#复杂度震荡" class="headerlink" title="复杂度震荡"></a>复杂度震荡</h3><p>我们是不是只是需要考虑resize什么时候触发就可以知道，每一次add操作应该平均分摊几次操作，是2次，对的，一般情况是这样的，但是我们要考虑resize的临界情况，因为add和delete被频繁触发，这样分摊到每一次的次数会发生变化，一直在上升，这样因为震荡，当一起考虑add和delete的时候，复杂度又成为了o(n)</p>
+<p>怎么解决？</p>
+<p>eager 变为 lazy，当resize时候，缩小的时候请lazy进行resize，留有buffer去缓冲触发的频率</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/01/31/java-垃圾回收GC/" data-id="cjrkn91d2000vr360fklh6325" class="article-share-link">Share</a>
+      <a data-url="http://zhzye.github.io/2019/02/01/java-时间复杂度/" data-id="cjrlc48s0001ar36054gashze" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gc/">gc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拓展阅读/">拓展阅读</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时间复杂度/">时间复杂度</a></li></ul>
 
     </footer>
   </div>
@@ -120,19 +149,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/02/01/java-时间复杂度/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          java-时间复杂度
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/31/java-泛型/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/31/java-垃圾回收GC/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">java-泛型</div>
+      <div class="article-nav-title">java-垃圾回收GC</div>
     </a>
   
 </nav>

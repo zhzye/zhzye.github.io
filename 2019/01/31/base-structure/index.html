@@ -17,7 +17,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://zhzye.github.io/images/2019/01/31/ee82b340-255d-11e9-ae81-ed119688c9cb.png">
 <meta property="og:image" content="http://zhzye.github.io/images/2019/01/31/45b13400-2560-11e9-ae81-ed119688c9cb.png">
-<meta property="og:updated_time" content="2019-01-31T13:58:24.695Z">
+<meta property="og:updated_time" content="2019-02-01T01:01:59.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构">
 <meta name="twitter:description" content="数组光说不能行，先扔个代码：https://github.com/zhzye/data-structure/tree/master/array 然后我们再来BB： int[] arr = new int[10];int[] arr = new int[]{1, 2, 3, 4};  数组最大的优点  快速查询 arr[2]   数组最好引用于“索引有语义”的情况 不是所有的语义索引都适用 身份证号">
@@ -124,7 +124,10 @@
 </li>
 <li><p>问题</p>
 <ul>
-<li>索引没有语意，如何表示没有元素？</li>
+<li>索引没有语意，如何表示没有元素？<ul>
+<li>索引如果有语义，带来的好处可以直接用index操作数据，复杂度是o(1)</li>
+</ul>
+</li>
 <li>如何添加元素？如何删除元素？</li>
 </ul>
 </li>
@@ -137,6 +140,7 @@
 <li>实际元素个数</li>
 </ul>
 </li>
+<li>由于update是依赖index，时间复杂度是o(1)，这种特性叫做：支持随机访问</li>
 </ul>
 </li>
 <li>实现<ul>

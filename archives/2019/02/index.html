@@ -5,20 +5,19 @@
   
 
   
-  <title>java-垃圾回收GC | 知乎者爷</title>
+  <title>Archives: 2019/2 | 知乎者爷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="是这样的，这个故事从实现一个Array开始说起… 如果说是一个Int类型的Array，在做删除的时候，我只是需要做index偏移就可以了，因为通过size的index指向了当前Array的最后存储的值得下一个，我只是做size的偏移，就不会再Array中访问到了，也就是做了删除，但是真实的值还是在我的int静态数组中存储中； 但是，为了通用性，把Int换成了E的泛型哪？会怎么样？ 泛型就不是基础数">
-<meta name="keywords" content="java,gc,拓展阅读">
-<meta property="og:type" content="article">
-<meta property="og:title" content="java-垃圾回收GC">
-<meta property="og:url" content="http://zhzye.github.io/2019/01/31/java-垃圾回收GC/index.html">
+  <meta name="description" content="2019主攻Java">
+<meta name="keywords" content="java">
+<meta property="og:type" content="website">
+<meta property="og:title" content="知乎者爷">
+<meta property="og:url" content="http://zhzye.github.io/archives/2019/02/index.html">
 <meta property="og:site_name" content="知乎者爷">
-<meta property="og:description" content="是这样的，这个故事从实现一个Array开始说起… 如果说是一个Int类型的Array，在做删除的时候，我只是需要做index偏移就可以了，因为通过size的index指向了当前Array的最后存储的值得下一个，我只是做size的偏移，就不会再Array中访问到了，也就是做了删除，但是真实的值还是在我的int静态数组中存储中； 但是，为了通用性，把Int换成了E的泛型哪？会怎么样？ 泛型就不是基础数">
+<meta property="og:description" content="2019主攻Java">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-31T13:20:44.153Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java-垃圾回收GC">
-<meta name="twitter:description" content="是这样的，这个故事从实现一个Array开始说起… 如果说是一个Int类型的Array，在做删除的时候，我只是需要做index偏移就可以了，因为通过size的index指向了当前Array的最后存储的值得下一个，我只是做size的偏移，就不会再Array中访问到了，也就是做了删除，但是真实的值还是在我的int静态数组中存储中； 但是，为了通用性，把Int换成了E的泛型哪？会怎么样？ 泛型就不是基础数">
+<meta name="twitter:title" content="知乎者爷">
+<meta name="twitter:description" content="2019主攻Java">
   
     <link rel="alternate" href="/atom.xml" title="知乎者爷" type="application/atom+xml">
   
@@ -69,76 +68,40 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-java-垃圾回收GC" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/31/java-垃圾回收GC/" class="article-date">
-  <time datetime="2019-01-31T13:16:57.000Z" itemprop="datePublished">2019-01-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      java-垃圾回收GC
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2019/02/01/java-时间复杂度/" class="archive-article-date">
+  <time datetime="2019-02-01T00:53:03.000Z" itemprop="datePublished">Feb 1</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/02/01/java-时间复杂度/">java-时间复杂度</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>是这样的，这个故事从实现一个Array开始说起…</p>
-<p>如果说是一个Int类型的Array，在做删除的时候，我只是需要做index偏移就可以了，因为通过size的index指向了当前Array的最后存储的值得下一个，我只是做size的偏移，就不会再Array中访问到了，也就是做了删除，但是真实的值还是在我的int静态数组中存储中；</p>
-<p>但是，为了通用性，把Int换成了E的泛型哪？会怎么样？</p>
-<p>泛型就不是基础数据类型，而是引用，如果说静态数组中的引用不被删除，那么这个引用指向的数据类型所占用的内存会释放吗？</p>
-<p>答案是：不会！最简单让垃圾回收的方式是，设置当前引用为null。<br>这种对象被称为：loitering objects</p>
-<p>这就是我们今天说的垃圾回收GC。</p>
-<h1 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h1><ul>
-<li>java gc</li>
-<li>loitering objects</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/01/31/java-垃圾回收GC/" data-id="cjrkn91d2000vr360fklh6325" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gc/">gc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拓展阅读/">拓展阅读</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/02/01/java-时间复杂度/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          java-时间复杂度
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/01/31/java-泛型/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">java-泛型</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
 
 </section>
         
