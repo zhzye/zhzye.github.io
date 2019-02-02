@@ -70,6 +70,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java-语言基础一篇汇" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/01/java-语言基础一篇汇/" class="article-date">
+  <time datetime="2019-02-01T01:19:33.000Z" itemprop="datePublished">2019-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/01/java-语言基础一篇汇/">java-语言基础一篇汇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="语言基础"><a href="#语言基础" class="headerlink" title="语言基础"></a>语言基础</h1><p>把java语言中所有琐碎的知识点在这里都玩一遍，地基不牢固，是要出问题的！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/01/java-语言基础一篇汇/" data-id="cjrld2b4a001fr360xd297fv4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语言基础/">语言基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java-时间复杂度" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/01/java-时间复杂度/" class="article-date">
@@ -518,7 +561,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="aop"><a href="#aop" class="headerlink" title="aop"></a>aop</h2><ul>
+        <h2 id="aop"><a href="#aop" class="headerlink" title="aop"></a>aop</h2><p>代码库：<a href="https://github.com/zhzye/spring/tree/master/aop" target="_blank" rel="noopener">https://github.com/zhzye/spring/tree/master/aop</a></p>
+<ul>
 <li>概述<ul>
 <li>aspect oriented programming</li>
 <li>预编译方式和运行期动态代理实现程序功能的统一维护的一种技术</li>
@@ -551,7 +595,9 @@
 <li>aspect</li>
 <li>运行期动态代理</li>
 </ul>
-
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="jdkproxy动态代理"><a href="#jdkproxy动态代理" class="headerlink" title="jdkproxy动态代理"></a>jdkproxy动态代理</h3><p>实现proxy核心代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoProxy</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserDaoProxy</span><span class="params">(UserDao userDao)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">createProxy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Proxy.newProxyInstance(userDao.getClass().getClassLoader(), userDao.getClass().getInterfaces(), <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">	<span class="comment">// !!!!这里最容易出错，看好第一个参数是userDao，而不是proxy</span></span><br><span class="line">        <span class="keyword">return</span> method.invoke(userDao, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用proxy代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">UserDao userDao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">UserDao proxy = (UserDao) <span class="keyword">new</span> UserDaoProxy(userDao).createProxy();</span><br><span class="line">proxy.saveUser();</span><br><span class="line">proxy.deleteUser();</span><br><span class="line">proxy.updateUser();</span><br><span class="line">proxy.getUser();</span><br></pre></td></tr></table></figure></p>
+<h2 id="cglib"><a href="#cglib" class="headerlink" title="cglib"></a>cglib</h2>
       
     </div>
     <footer class="article-footer">
