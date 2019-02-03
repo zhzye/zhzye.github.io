@@ -5,20 +5,19 @@
   
 
   
-  <title>java-泛型 | 知乎者爷</title>
+  <title>知乎者爷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="泛型可以支持任何数据类型  不可以是基础数据类型 有哪些 boolean char byte short int long float double   对应的包装类可以使用 Boolean Char Byte Short Int Long Float Double">
-<meta name="keywords" content="java,泛型">
-<meta property="og:type" content="article">
-<meta property="og:title" content="java-泛型">
-<meta property="og:url" content="http://zhzye.github.io/2019/01/31/java-泛型/index.html">
+  <meta name="description" content="2019主攻Java">
+<meta name="keywords" content="java">
+<meta property="og:type" content="website">
+<meta property="og:title" content="知乎者爷">
+<meta property="og:url" content="http://zhzye.github.io/page/2/index.html">
 <meta property="og:site_name" content="知乎者爷">
-<meta property="og:description" content="泛型可以支持任何数据类型  不可以是基础数据类型 有哪些 boolean char byte short int long float double   对应的包装类可以使用 Boolean Char Byte Short Int Long Float Double">
+<meta property="og:description" content="2019主攻Java">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-31T13:18:40.259Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java-泛型">
-<meta name="twitter:description" content="泛型可以支持任何数据类型  不可以是基础数据类型 有哪些 boolean char byte short int long float double   对应的包装类可以使用 Boolean Char Byte Short Int Long Float Double">
+<meta name="twitter:title" content="知乎者爷">
+<meta name="twitter:description" content="2019主攻Java">
   
     <link rel="alternate" href="/atom.xml" title="知乎者爷" type="application/atom+xml">
   
@@ -69,16 +68,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-java-泛型" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-java-thread" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/31/java-泛型/" class="article-date">
-  <time datetime="2019-01-31T13:07:14.000Z" itemprop="datePublished">2019-01-31</time>
+    <a href="/2019/01/30/java-thread/" class="article-date">
+  <time datetime="2019-01-30T14:47:45.000Z" itemprop="datePublished">2019-01-30</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -86,8 +83,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      java-泛型
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/30/java-thread/">java线程</a>
     </h1>
   
 
@@ -95,23 +92,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>可以支持<code>任何数据类型</code></p>
-<ul>
-<li>不可以是基础数据类型<ul>
-<li>有哪些<ul>
-<li>boolean</li>
-<li>char</li>
-<li>byte short int long</li>
-<li>float double</li>
+        <h2 id="points"><a href="#points" class="headerlink" title="points"></a>points</h2><ul>
+<li>进程</li>
+<li>线程</li>
+<li>cpu时间片轮转，达到同时运行多个进程、多个线程</li>
+<li>什么是多线程</li>
+<li>线程的创建</li>
+<li>线程的状态和生命周期</li>
+<li>线程调度</li>
+<li>同步和死锁</li>
+</ul>
+<h2 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h2><ul>
+<li>创建Thread类，或者一个Thread子类的对象</li>
+<li>创建一个实现Runnable接口的类的对象</li>
+</ul>
+<h3 id="Thread-java-lang"><a href="#Thread-java-lang" class="headerlink" title="Thread@java.lang"></a><a href="mailto:Thread@java.lang" target="_blank" rel="noopener">Thread@java.lang</a></h3><ul>
+<li>创建的方法<ul>
+<li>Thread()</li>
+<li>Thread(String name)</li>
+<li>Thread(Runnable target)</li>
+<li>Thread(Runnable target, String name) </li>
 </ul>
 </li>
-<li>对应的包装类可以使用<ul>
-<li>Boolean</li>
-<li>Char</li>
-<li>Byte Short Int Long</li>
-<li>Float Double</li>
+<li>重要方法<ul>
+<li>public void run()<ul>
+<li>线程执行体</li>
 </ul>
 </li>
+<li>public void start()<ul>
+<li>启动</li>
+</ul>
+</li>
+<li>public static void sleep(long m)<ul>
+<li>休眠<ul>
+<li>毫秒</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>public void join() - 优先执行，抢占资源</li>
 </ul>
 </li>
 </ul>
@@ -119,36 +138,63 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/01/31/java-泛型/" data-id="cjrkmwk6e000qr360mg2275f1" class="article-share-link">Share</a>
+      <a data-url="http://zhzye.github.io/2019/01/30/java-thread/" data-id="cjrk8sj680001r360c28xkoms" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/泛型/">泛型</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread/">thread</a></li></ul>
 
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2019/01/31/java-垃圾回收GC/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          java-垃圾回收GC
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/01/31/java开发神器/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">java开发神器</div>
-    </a>
-  
-</nav>
+</article>
+
 
   
+    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/30/hello-world/" class="article-date">
+  <time datetime="2019-01-29T17:53:23.647Z" itemprop="datePublished">2019-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/30/hello-world/">半夜开博客，一定有话要BB</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>妈的！工作7，8年，一直在写业务，很多技术侧的沉淀不够多，技术深度不够，最近在工作上感受到了乏力！</p>
+<p>所以这里，我tm的匿名开博客，以后每日最少写一篇技术文章，做好深度的沉淀！</p>
+<p>2019年，主要研究Java技术栈内容</p>
+<h2 id="加油"><a href="#加油" class="headerlink" title="加油"></a>加油</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/01/30/hello-world/" data-id="cjrk8sj620000r360n6s368em" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
 </article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </section>
         
