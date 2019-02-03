@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="知乎者爷">
 <meta property="og:description" content="aop代码库：https://github.com/zhzye/spring/tree/master/aop  概述 aspect oriented programming 预编译方式和运行期动态代理实现程序功能的统一维护的一种技术 oop延续，函数式变成的一种衍生范型 隔离业务逻辑各个部分，降低耦合度，提升程序的可重用性 采取横向抽取机制，取代了传统纵向继承体系重复性代码（性能检测、事务管理、安">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-02T02:18:53.335Z">
+<meta property="og:updated_time" content="2019-02-03T11:25:52.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring aop">
 <meta name="twitter:description" content="aop代码库：https://github.com/zhzye/spring/tree/master/aop  概述 aspect oriented programming 预编译方式和运行期动态代理实现程序功能的统一维护的一种技术 oop延续，函数式变成的一种衍生范型 隔离业务逻辑各个部分，降低耦合度，提升程序的可重用性 采取横向抽取机制，取代了传统纵向继承体系重复性代码（性能检测、事务管理、安">
@@ -131,7 +131,14 @@
 </ul>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="jdkproxy动态代理"><a href="#jdkproxy动态代理" class="headerlink" title="jdkproxy动态代理"></a>jdkproxy动态代理</h3><p>实现proxy核心代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoProxy</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserDaoProxy</span><span class="params">(UserDao userDao)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">createProxy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Proxy.newProxyInstance(userDao.getClass().getClassLoader(), userDao.getClass().getInterfaces(), <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">	<span class="comment">// !!!!这里最容易出错，看好第一个参数是userDao，而不是proxy</span></span><br><span class="line">        <span class="keyword">return</span> method.invoke(userDao, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>使用proxy代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">UserDao userDao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">UserDao proxy = (UserDao) <span class="keyword">new</span> UserDaoProxy(userDao).createProxy();</span><br><span class="line">proxy.saveUser();</span><br><span class="line">proxy.deleteUser();</span><br><span class="line">proxy.updateUser();</span><br><span class="line">proxy.getUser();</span><br></pre></td></tr></table></figure></p>
-<h2 id="cglib"><a href="#cglib" class="headerlink" title="cglib"></a>cglib</h2>
+<h2 id="cglib"><a href="#cglib" class="headerlink" title="cglib"></a>cglib</h2><p>区别于jdk动态代理方式，必须要面向接口编程，存在接口，我们这里用的是一个实现类没有实现任何接口的实现类</p>
+<p>实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhzye.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoWithoutInterface</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"save"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"get user"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>cglib实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhzye.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.cglib.proxy.Enhancer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cglib.proxy.MethodInterceptor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cglib.proxy.MethodProxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这种proxy使用了cglib</span></span><br><span class="line"><span class="comment"> * 属于字节码增强技术</span></span><br><span class="line"><span class="comment"> * 目前cglib的支持在spring组件中</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoCGLibProxy</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Object object;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserDaoCGLibProxy</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.object = object;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">createProxy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Enhancer enhancer = <span class="keyword">new</span> Enhancer();</span><br><span class="line">        enhancer.setSuperclass(object.getClass());</span><br><span class="line">        enhancer.setCallback(<span class="keyword">this</span>);</span><br><span class="line">        Object proxy = enhancer.create();</span><br><span class="line">        <span class="keyword">return</span> proxy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (method.getName().equals(<span class="string">"saveUser"</span>)) &#123;</span><br><span class="line">            System.out.println(<span class="string">"save user 增强"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> methodProxy.invokeSuper(o, objects);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>return methodProxy.invokeSuper(o, objects);</code>这里注意是第一个参数，而不是接口的实现调用，区别jdk dynamic proxy模式</p>
+<p>使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UserDaoWithoutInterface userDao = <span class="keyword">new</span> UserDaoWithoutInterface();</span><br><span class="line">        UserDaoWithoutInterface proxy = (UserDaoWithoutInterface) <span class="keyword">new</span> UserDaoCGLibProxy(userDao).createProxy();</span><br><span class="line">        proxy.saveUser();</span><br><span class="line">        proxy.getUser();</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
@@ -174,7 +181,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/漫天说/">漫天说</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/漫天说/">漫天说</a></li></ul>
     </div>
   </div>
 
@@ -184,7 +191,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/gc/">gc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展阅读/">拓展阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/泛型/">泛型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软素质/">软素质</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/">aop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gc/">gc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展阅读/">拓展阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时间复杂度/">时间复杂度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/泛型/">泛型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语言基础/">语言基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软素质/">软素质</a></li></ul>
     </div>
   </div>
 
@@ -194,7 +201,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/gc/" style="font-size: 10px;">gc</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/拓展阅读/" style="font-size: 10px;">拓展阅读</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/软素质/" style="font-size: 10px;">软素质</a>
+      <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/gc/" style="font-size: 10px;">gc</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/拓展阅读/" style="font-size: 10px;">拓展阅读</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/时间复杂度/" style="font-size: 10px;">时间复杂度</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/语言基础/" style="font-size: 10px;">语言基础</a> <a href="/tags/软素质/" style="font-size: 10px;">软素质</a>
     </div>
   </div>
 
@@ -203,7 +210,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -216,6 +223,14 @@
       <ul>
         
           <li>
+            <a href="/2019/02/01/java-语言基础一篇汇/">java-语言基础一篇汇</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/01/java-时间复杂度/">java-时间复杂度</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/31/java-垃圾回收GC/">java-垃圾回收GC</a>
           </li>
         
@@ -225,14 +240,6 @@
         
           <li>
             <a href="/2019/01/31/java开发神器/">java开发神器</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/31/base-structure/">数据结构</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/31/java-learning/">java范范的来说</a>
           </li>
         
       </ul>
