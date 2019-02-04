@@ -70,6 +70,179 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-xml-xmlns-xsi-schemaLocation" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/05/xml-xmlns-xsi-schemaLocation/" class="article-date">
+  <time datetime="2019-02-04T16:54:02.000Z" itemprop="datePublished">2019-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/xml/">xml</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/05/xml-xmlns-xsi-schemaLocation/">xml xmlns xsi schemaLocation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>spring中xml代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>xml先来看看几个概念，java项目中作为xml文件头部开头的标签，我们在好多处都可以看到，下面分别来看看代表的含义</p>
+<ul>
+<li>xmlns<ul>
+<li>xml namespaces<ul>
+<li>防止相同的标签名称在同一个xml中冲突</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>xsi<ul>
+<li>xml schema instance<ul>
+<li>业内默认用于xsd文件的命名空间</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>xsd<ul>
+<li>xml schema definition<ul>
+<li>定义xml文档结构</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>schemaLocation<ul>
+<li>schema 具体引用的资源<ul>
+<li>由key value组成</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>参考：</p>
+<p><a href="https://blog.csdn.net/lengxiao1993/article/details/77914155" target="_blank" rel="noopener">https://blog.csdn.net/lengxiao1993/article/details/77914155</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/05/xml-xmlns-xsi-schemaLocation/" data-id="cjrqkrma5002dr360yncs0azq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xml/">xml</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spring-bean" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/04/spring-bean/" class="article-date">
+  <time datetime="2019-02-04T11:52:20.000Z" itemprop="datePublished">2019-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/04/spring-bean/">spring bean</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="spring-bean"><a href="#spring-bean" class="headerlink" title="spring bean"></a>spring bean</h1><h2 id="开启注解扫描"><a href="#开启注解扫描" class="headerlink" title="开启注解扫描"></a>开启注解扫描</h2><ul>
+<li>context xml定义导入</li>
+<li>开启标记<ul>
+<li><code>&lt;context:component-scan base-package=&quot;com.zhzye.jdbc&quot;/&gt;</code></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/04/spring-bean/" data-id="cjrq9znfn0028r3605s8p3u4t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bean/">bean</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spring-jdbctemplate" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/04/spring-jdbctemplate/" class="article-date">
+  <time datetime="2019-02-04T10:57:31.000Z" itemprop="datePublished">2019-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/04/spring-jdbctemplate/">spring-jdbctemplate</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="jdbctemplate"><a href="#jdbctemplate" class="headerlink" title="jdbctemplate"></a>jdbctemplate</h1><h2 id="what"><a href="#what" class="headerlink" title="what?"></a>what?</h2><p>jdbc是为了操作方便，在jdbc api之上封装的，所以我们要先明白jdbc api都做了什么？</p>
+<p>这就是大名鼎鼎的mysql-connector-J</p>
+<h2 id="Mysql-Connector-J"><a href="#Mysql-Connector-J" class="headerlink" title="Mysql Connector/J"></a>Mysql Connector/J</h2><p>maven 依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.15<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>代码实现：<a href="https://github.com/zhzye/spring/tree/master/jdbc" target="_blank" rel="noopener">https://github.com/zhzye/spring/tree/master/jdbc</a></p>
+<h2 id="how"><a href="#how" class="headerlink" title="how?"></a>how?</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/04/spring-jdbctemplate/" data-id="cjrq815vt0021r360zlca6ws9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc-template/">jdbc-template</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-spring-AspectJ" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/03/spring-AspectJ/" class="article-date">
@@ -613,475 +786,6 @@
 
 
   
-    <article id="post-base-structure" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/31/base-structure/" class="article-date">
-  <time datetime="2019-01-31T05:16:43.000Z" itemprop="datePublished">2019-01-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/31/base-structure/">数据结构</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>光说不能行，先扔个代码：<a href="https://github.com/zhzye/data-structure/tree/master/array" target="_blank" rel="noopener">https://github.com/zhzye/data-structure/tree/master/array</a></p>
-<p>然后我们再来BB：</p>
-<p>int[] arr = new int[10];<br>int[] arr = new int[]{1, 2, 3, 4};</p>
-<ul>
-<li><p>数组最大的优点</p>
-<ul>
-<li>快速查询<ul>
-<li>arr[2]</li>
-</ul>
-</li>
-<li>数组最好引用于“索引有语义”的情况</li>
-<li>不是所有的语义索引都适用<ul>
-<li>身份证号<ul>
-<li>开辟的空间太大</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>封装一个数组<ul>
-<li><img src="/images/2019/01/31/ee82b340-255d-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190131 下午5.30.16.png"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>问题</p>
-<ul>
-<li>索引没有语意，如何表示没有元素？<ul>
-<li>索引如果有语义，带来的好处可以直接用index操作数据，复杂度是o(1)</li>
-</ul>
-</li>
-<li>如何添加元素？如何删除元素？</li>
-</ul>
-</li>
-<li>Array<ul>
-<li>capacity<ul>
-<li>容量</li>
-</ul>
-</li>
-<li>size<ul>
-<li>实际元素个数</li>
-</ul>
-</li>
-<li>由于update是依赖index，时间复杂度是o(1)，这种特性叫做：支持随机访问</li>
-</ul>
-</li>
-<li>实现<ul>
-<li>创建元素和删除元素在指定位置是难点<ul>
-<li>要考虑验证边界</li>
-<li>在做偏移移动出一个空位或者删除一个空位，要做n次移动</li>
-</ul>
-</li>
-<li>当用泛型的时候，如果new一个数组<ul>
-<li>(E[])new Object[length];<ul>
-<li>依赖Object做强制类型转换的方式</li>
-</ul>
-</li>
-<li>当用泛型的时候，如果判断相等<ul>
-<li>不能像是基础数据类型一样，使用==，要使用`equals</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="动态数组"><a href="#动态数组" class="headerlink" title="动态数组"></a>动态数组</h3><p>我们第一版本实现的Array只是支持一个定长的数组，这tm使用起来太麻烦了，还要时刻关注大小，以防止溢出，有没有更好的方法？</p>
-<p>好吧，你看标题也知道了，这就是动态数组！</p>
-<p>来练练手…</p>
-<p>动态数组，就是让capacity随着每一次到达临界值都会自动扩充，如何扩充？</p>
-<p>通常来说，我们按照一个因子，如：2或者1.5，ArrayList使用1.5</p>
-<p>我们来举例说明：当前capacity为10，如果因子是2，则下一次数组满了，我就再开辟一个capacity为20的数组。</p>
-<p>resize过程画个图来说明吧：</p>
-<p><img src="/images/2019/01/31/45b13400-2560-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190131 下午9.58.01.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/01/31/base-structure/" data-id="cjrko18rw0016r360s5ckbjz6" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java-learning" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/31/java-learning/" class="article-date">
-  <time datetime="2019-01-31T04:55:15.000Z" itemprop="datePublished">2019-01-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/漫天说/">漫天说</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/31/java-learning/">java范范的来说</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="程序员的核心能力？"><a href="#程序员的核心能力？" class="headerlink" title="程序员的核心能力？"></a>程序员的核心能力？</h2><ul>
-<li>基础知识</li>
-<li>编程能力</li>
-</ul>
-<h2 id="编程能力"><a href="#编程能力" class="headerlink" title="编程能力"></a>编程能力</h2><p>能力，要通过练习才可以master，侧重点：</p>
-<ol>
-<li>高效<ol>
-<li>vim</li>
-<li>idea</li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/01/31/java-learning/" data-id="cjrk8sj6g0009r360l45lh0yx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软素质/">软素质</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-spring-aop" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/31/spring-aop/" class="article-date">
-  <time datetime="2019-01-31T03:05:29.000Z" itemprop="datePublished">2019-01-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/31/spring-aop/">spring aop</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="aop"><a href="#aop" class="headerlink" title="aop"></a>aop</h2><p>代码库：<a href="https://github.com/zhzye/spring/tree/master/aop" target="_blank" rel="noopener">https://github.com/zhzye/spring/tree/master/aop</a></p>
-<ul>
-<li>概述<ul>
-<li>aspect oriented programming</li>
-<li>预编译方式和运行期动态代理实现程序功能的统一维护的一种技术</li>
-<li>oop延续，函数式变成的一种衍生范型</li>
-<li>隔离业务逻辑各个部分，降低耦合度，提升程序的可重用性</li>
-<li>采取横向抽取机制，取代了传统纵向继承体系重复性代码（性能检测、事务管理、安全检查、缓存）</li>
-<li>使用横向抽取代替纵向继承</li>
-<li>Spring AOP使用java实现，不需要专门的编译过程和类加载器，在运行期通过代理方式向目标类织入增强代码</li>
-</ul>
-</li>
-<li>底层实现</li>
-<li>传统AOP SPRING<ul>
-<li>不带切入点的切面</li>
-<li>带切入点的切面</li>
-</ul>
-</li>
-<li>传统AOP自动代理<ul>
-<li>基于Bean名称的自动代理</li>
-<li>基于切面信息的自动代理</li>
-</ul>
-</li>
-</ul>
-<h2 id="新的概念"><a href="#新的概念" class="headerlink" title="新的概念"></a>新的概念</h2><ul>
-<li>类加载器</li>
-<li>代理模式</li>
-<li>jdk动态代理</li>
-<li>织入</li>
-<li>横向抽取</li>
-<li>函数式变成</li>
-<li>aspect</li>
-<li>运行期动态代理</li>
-</ul>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>总的需要注意的，无论使用jdk还是cglib来实现动态代理，都是对目标类生成子类的方式，所以不可以在类或者方法前面使用<code>final修饰</code></p>
-<h3 id="jdkproxy动态代理"><a href="#jdkproxy动态代理" class="headerlink" title="jdkproxy动态代理"></a>jdkproxy动态代理</h3><p>实现proxy核心代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoProxy</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserDaoProxy</span><span class="params">(UserDao userDao)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">createProxy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Proxy.newProxyInstance(userDao.getClass().getClassLoader(), userDao.getClass().getInterfaces(), <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">	<span class="comment">// !!!!这里最容易出错，看好第一个参数是userDao，而不是proxy</span></span><br><span class="line">        <span class="keyword">return</span> method.invoke(userDao, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用proxy代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">UserDao userDao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">UserDao proxy = (UserDao) <span class="keyword">new</span> UserDaoProxy(userDao).createProxy();</span><br><span class="line">proxy.saveUser();</span><br><span class="line">proxy.deleteUser();</span><br><span class="line">proxy.updateUser();</span><br><span class="line">proxy.getUser();</span><br></pre></td></tr></table></figure></p>
-<h3 id="cglib"><a href="#cglib" class="headerlink" title="cglib"></a>cglib</h3><p>区别于jdk动态代理方式，必须要面向接口编程，存在接口，我们这里用的是一个实现类没有实现任何接口的实现类</p>
-<p>实现类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhzye.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoWithoutInterface</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"save"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"get user"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>cglib实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhzye.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.cglib.proxy.Enhancer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cglib.proxy.MethodInterceptor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cglib.proxy.MethodProxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这种proxy使用了cglib</span></span><br><span class="line"><span class="comment"> * 属于字节码增强技术</span></span><br><span class="line"><span class="comment"> * 目前cglib的支持在spring组件中</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoCGLibProxy</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Object object;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserDaoCGLibProxy</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.object = object;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">createProxy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Enhancer enhancer = <span class="keyword">new</span> Enhancer();</span><br><span class="line">        enhancer.setSuperclass(object.getClass());</span><br><span class="line">        enhancer.setCallback(<span class="keyword">this</span>);</span><br><span class="line">        Object proxy = enhancer.create();</span><br><span class="line">        <span class="keyword">return</span> proxy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (method.getName().equals(<span class="string">"saveUser"</span>)) &#123;</span><br><span class="line">            System.out.println(<span class="string">"save user 增强"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> methodProxy.invokeSuper(o, objects);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>return methodProxy.invokeSuper(o, objects);</code>这里注意是第一个参数，而不是接口的实现调用，区别jdk dynamic proxy模式</p>
-<p>使用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UserDaoWithoutInterface userDao = <span class="keyword">new</span> UserDaoWithoutInterface();</span><br><span class="line">UserDaoWithoutInterface proxy = (UserDaoWithoutInterface) <span class="keyword">new</span> UserDaoCGLibProxy(userDao).createProxy();</span><br><span class="line">proxy.saveUser();</span><br><span class="line">proxy.getUser();</span><br></pre></td></tr></table></figure>
-<h2 id="增强-advice"><a href="#增强-advice" class="headerlink" title="增强 advice"></a>增强 advice</h2><p>advice这个概念，在实现的时候要注意！！！这里要对其<code>inspector==advice</code>公式！</p>
-<ul>
-<li>类型<ul>
-<li>前置通知<ul>
-<li>在目标方法执行前实施增强</li>
-<li>MethodBeforeAdvice</li>
-</ul>
-</li>
-<li>后置通知</li>
-<li>环绕通知<ul>
-<li>在前后实施增强</li>
-<li>MethodIntercepter</li>
-</ul>
-</li>
-<li>异常通知<ul>
-<li>跑出异常实施增强</li>
-</ul>
-</li>
-<li>引介通知<code>暂时不需要了解</code><ul>
-<li>在<code>目标类</code>中添加一些新的方法和属性</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="aop切面类型"><a href="#aop切面类型" class="headerlink" title="aop切面类型"></a>aop切面类型</h2><ul>
-<li>advisor<ul>
-<li>一般切面，advice本身就是一个切面，对目标类所有方法进行拦截inspect</li>
-<li>在spring实现概念，对其<code>aspect</code></li>
-</ul>
-</li>
-<li>PointcutAdvisor<ul>
-<li>具有切点的切面，可以指定拦截目标类的方法 </li>
-</ul>
-</li>
-<li>IntroductionAdvisor<code>暂时不用了解</code><ul>
-<li>引介切面，对引介通知而使用切面</li>
-</ul>
-</li>
-</ul>
-<h2 id="使用spring内部定义aop"><a href="#使用spring内部定义aop" class="headerlink" title="使用spring内部定义aop"></a>使用spring内部定义aop</h2><h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><ul>
-<li>aopalliance<ul>
-<li>aopalliance<ul>
-<li>1.0</li>
-<li>aop联盟</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>org.springframework<ul>
-<li>spring-aop<ul>
-<li>5.1.4.RELEASE</li>
-</ul>
-</li>
-<li>spring-test<ul>
-<li>5.1.4.RELEASE</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Spring传统aop使用"><a href="#Spring传统aop使用" class="headerlink" title="Spring传统aop使用"></a>Spring传统aop使用</h3><h4 id="一般切面"><a href="#一般切面" class="headerlink" title="一般切面"></a>一般切面</h4><p>普通advice作为切面，将目标类所有方法进行拦截，不够灵活，不能指定目标类的特定连接点</p>
-<p>如何使用增强？先来记住几个关键词</p>
-<ul>
-<li><p>ProxyFactoryBean</p>
-<ul>
-<li>代理类创建的工厂类</li>
-<li><p>DI属性</p>
-<ul>
-<li>target</li>
-<li>proxyInterfaces</li>
-<li><p>interceptorNames</p>
-<ul>
-<li>需要weaving目标的advice</li>
-</ul>
-</li>
-<li><p>选参数</p>
-<ul>
-<li>proxyTargetClass<ul>
-<li>true使用cglib</li>
-<li>false使用jdk</li>
-</ul>
-</li>
-<li>singleton<ul>
-<li>返回代理对象，是否为单例，默认为单例</li>
-</ul>
-</li>
-<li>optimize<ul>
-<li>true强制使用cglib</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>一般切面代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhzye.aop.springway;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.MethodBeforeAdvice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonBeforeAdvice</span> <span class="keyword">implements</span> <span class="title">MethodBeforeAdvice</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">(Method method, Object[] objects, Object o)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"before advice增强"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ProxyFactoryBean使用<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"person"</span> <span class="attr">class</span>=<span class="string">"com.zhzye.aop.springway.PersonImpl"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myBeforeAdvice"</span> <span class="attr">class</span>=<span class="string">"com.zhzye.aop.springway.PersonBeforeAdvice"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"personProxy"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"target"</span> <span class="attr">ref</span>=<span class="string">"person"</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- jdk方式 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"proxyInterfaces"</span> <span class="attr">value</span>=<span class="string">"com.zhzye.aop.springway.Person"</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 这里是名称，不是引用 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"interceptorNames"</span> <span class="attr">value</span>=<span class="string">"myBeforeAdvice"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>上述xml，使用了JDKDynamicProxy，加个埋点可以看到</p>
-<p><img src="/images/2019/02/03/e51d4140-27be-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190203 下午10.19.27.png"></p>
-<p>我们都知道，JDKDynamicProxy不支持那些不存在接口的类，我们来试试，这种方法可以可以用吗？</p>
-<p>真实情况，spring实现aop比较智能，下述的xml配置都可以生效</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"person"</span> <span class="attr">class</span>=<span class="string">"com.zhzye.aop.springway.PersonImpl"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myBeforeAdvice"</span> <span class="attr">class</span>=<span class="string">"com.zhzye.aop.springway.PersonBeforeAdvice"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"personProxy"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"target"</span> <span class="attr">ref</span>=<span class="string">"person"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 注释是否开启都生效 --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;property name="proxyInterfaces" value="com.zhzye.aop.springway.Person"/&gt;--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"interceptorNames"</span> <span class="attr">value</span>=<span class="string">"myBeforeAdvice"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"personWithoutInterface"</span> <span class="attr">class</span>=<span class="string">"com.zhzye.aop.springway.PersonWithoutInterface"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"personWithoutInterfaceProxy"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"target"</span> <span class="attr">ref</span>=<span class="string">"personWithoutInterface"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 注释是否开启都生效 --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;property name="proxyTargetClass" value="true"/&gt;--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"interceptorNames"</span> <span class="attr">value</span>=<span class="string">"myBeforeAdvice"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>结论：真正有效的就是target和interceptorNames<br>截止到目前为止，我们实现了一个advice通过一般切面来增强了目标类每一个方法，都拦截了，只能在advice中过滤，如何advice到固定的joinpoint中，看下面的PoincutAdvisor（切点切面）。</p>
-<h3 id="PointcutAdvisor"><a href="#PointcutAdvisor" class="headerlink" title="PointcutAdvisor"></a>PointcutAdvisor</h3><p>切点切面，对目标类指定连接点进行切面</p>
-<ul>
-<li>PointcutAdvisor<ul>
-<li>实现类<ul>
-<li>DefaultPointcutAdvisor<ul>
-<li>最常用切面，组合Pointcut和Advice组合定义切面<ul>
-<li>MethodIntercepter<ul>
-<li>invocation.proceed()</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>DI属性<ul>
-<li>target</li>
-<li>proxyTargetClass<ul>
-<li>true</li>
-</ul>
-</li>
-<li>intercepterNames<ul>
-<li>不能是MethodIntercepter接口实现类了<ul>
-<li>因为一般的切面是使用通知作为切面，我们要对某个目标类方法增强，需要配置带切入点的切面<ul>
-<li>RegexpMethodPointcut<ul>
-<li>正则表达式切点<ul>
-<li>DI属性<ul>
-<li>pattern<ul>
-<li><code>.*user.*,.*delete.*</code></li>
-</ul>
-</li>
-<li>advice<ul>
-<li>MethodIntercepter接口子类</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>与上面的比较，切点切面，只是多创建了一个PointcutAdvisor对象而已，xml如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--创建切点--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"studentPointcutAdvisor"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.support.RegexpMethodPointcutAdvisor"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"pattern"</span> <span class="attr">value</span>=<span class="string">".*sa.*"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"advice"</span> <span class="attr">ref</span>=<span class="string">"myBeforeAdvice"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="自动创建代理"><a href="#自动创建代理" class="headerlink" title="自动创建代理"></a>自动创建代理</h2><p>之前介绍的方式，每个代理都需要配置一大堆的关于ProxyFactoryBean的工厂信息，如果代理多后，开发维护成本都非常的高</p>
-<ul>
-<li>BeanNameAutoProxyCreator<ul>
-<li>Bean名称</li>
-</ul>
-</li>
-<li>DefaultAdvisorAutoProxyCreator<ul>
-<li>切面信息创建的代理<ul>
-<li>Advisor本身信息</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>AnnotationAwareAspectJAutoProxyCreator<ul>
-<li>基于Bean中AspectJ注解</li>
-</ul>
-</li>
-</ul>
-<h3 id="BeanNameAutoProxyCreator-基于Bean名称给自动代理机制"><a href="#BeanNameAutoProxyCreator-基于Bean名称给自动代理机制" class="headerlink" title="BeanNameAutoProxyCreator 基于Bean名称给自动代理机制"></a>BeanNameAutoProxyCreator 基于Bean名称给自动代理机制</h3><p>所有以DAO结尾的Bean产生代理，其实底层依据<code>BeanPostProcessor</code>在Bean创建时候自动创建了代理</p>
-<ul>
-<li>BeanNameAutoProxyCreator<ul>
-<li>DI属性<ul>
-<li>beanNames<ul>
-<li>*Dao</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>interceptorNames<ul>
-<li><property name="" value="">
-
-</property></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>这种方式是一般切面，对目标类所有方法都weaving，我们看下xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 自动创建ProxyFactoryBean --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"teacher"</span> <span class="attr">class</span>=<span class="string">"com.zhzye.aop.auto.Teacher"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"proxy"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"beanNames"</span> <span class="attr">value</span>=<span class="string">"*cher"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"interceptorNames"</span> <span class="attr">value</span>=<span class="string">"myBeforeAdvice"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="DefaultAdvisorAutoProxyCreator"><a href="#DefaultAdvisorAutoProxyCreator" class="headerlink" title="DefaultAdvisorAutoProxyCreator"></a>DefaultAdvisorAutoProxyCreator</h3><p>基于切面信息代理 </p>
-<ul>
-<li>RegexpMethodPointcutAdvisor<ul>
-<li>pattern</li>
-<li>advice</li>
-</ul>
-</li>
-<li>DefaultAdvisorAutoProxyCreator</li>
-</ul>
-<p>这种PoincutAdvisor与上面的基本相同</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--自动创建PointcutAdvisor--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myBeforeAdvice"</span> <span class="attr">class</span>=<span class="string">"com.zhzye.aop.springway.PersonBeforeAdvice"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"book"</span> <span class="attr">class</span>=<span class="string">"com.zhzye.aop.auto.Book"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"pointcutAdvisor"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.support.RegexpMethodPointcutAdvisor"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"pattern"</span> <span class="attr">value</span>=<span class="string">".*hi.*"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"advice"</span> <span class="attr">ref</span>=<span class="string">"myBeforeAdvice"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>注意一点：当使用自动注册Proxy时，Bean名称方式和切点切面方式不要混用，否则会编译报错。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/01/31/spring-aop/" data-id="cjrk8sj6h000br360cirs8c6g" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aop/">aop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1097,7 +801,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/漫天说/">漫天说</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/xml/">xml</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/漫天说/">漫天说</a></li></ul>
     </div>
   </div>
 
@@ -1107,7 +811,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AspectJ/">AspectJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RunWith/">RunWith</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/">aop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gc/">gc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展阅读/">拓展阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时间复杂度/">时间复杂度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/泛型/">泛型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语言基础/">语言基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软素质/">软素质</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AspectJ/">AspectJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RunWith/">RunWith</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/">aop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bean/">bean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gc/">gc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc-template/">jdbc-template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xml/">xml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展阅读/">拓展阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时间复杂度/">时间复杂度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/泛型/">泛型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语言基础/">语言基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软素质/">软素质</a></li></ul>
     </div>
   </div>
 
@@ -1117,7 +821,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AspectJ/" style="font-size: 10px;">AspectJ</a> <a href="/tags/RunWith/" style="font-size: 10px;">RunWith</a> <a href="/tags/aop/" style="font-size: 13.33px;">aop</a> <a href="/tags/gc/" style="font-size: 10px;">gc</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/spring/" style="font-size: 16.67px;">spring</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/拓展阅读/" style="font-size: 10px;">拓展阅读</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/时间复杂度/" style="font-size: 10px;">时间复杂度</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/语言基础/" style="font-size: 10px;">语言基础</a> <a href="/tags/软素质/" style="font-size: 10px;">软素质</a>
+      <a href="/tags/AspectJ/" style="font-size: 10px;">AspectJ</a> <a href="/tags/RunWith/" style="font-size: 10px;">RunWith</a> <a href="/tags/aop/" style="font-size: 13.33px;">aop</a> <a href="/tags/bean/" style="font-size: 10px;">bean</a> <a href="/tags/gc/" style="font-size: 10px;">gc</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbc/" style="font-size: 10px;">jdbc</a> <a href="/tags/jdbc-template/" style="font-size: 10px;">jdbc-template</a> <a href="/tags/spring/" style="font-size: 16.67px;">spring</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/拓展阅读/" style="font-size: 10px;">拓展阅读</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/时间复杂度/" style="font-size: 10px;">时间复杂度</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/语言基础/" style="font-size: 10px;">语言基础</a> <a href="/tags/软素质/" style="font-size: 10px;">软素质</a>
     </div>
   </div>
 
@@ -1139,23 +843,23 @@
       <ul>
         
           <li>
+            <a href="/2019/02/05/xml-xmlns-xsi-schemaLocation/">xml xmlns xsi schemaLocation</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/spring-bean/">spring bean</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/04/spring-jdbctemplate/">spring-jdbctemplate</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/03/spring-AspectJ/">spring-AspectJ</a>
           </li>
         
           <li>
             <a href="/2019/02/03/spring-RunWith/">spring-RunWith</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/01/java-语言基础一篇汇/">java-语言基础一篇汇</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/01/java-时间复杂度/">java-时间复杂度</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/31/java-垃圾回收GC/">java-垃圾回收GC</a>
           </li>
         
       </ul>

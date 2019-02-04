@@ -5,19 +5,20 @@
   
 
   
-  <title>Archives | 知乎者爷</title>
+  <title>xml xmlns xsi schemaLocation | 知乎者爷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2019主攻Java">
-<meta name="keywords" content="java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="知乎者爷">
-<meta property="og:url" content="http://zhzye.github.io/archives/page/2/index.html">
+  <meta name="description" content="spring中xml代码： 12345&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;       xsi:schem">
+<meta name="keywords" content="xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xml xmlns xsi schemaLocation">
+<meta property="og:url" content="http://zhzye.github.io/2019/02/05/xml-xmlns-xsi-schemaLocation/index.html">
 <meta property="og:site_name" content="知乎者爷">
-<meta property="og:description" content="2019主攻Java">
+<meta property="og:description" content="spring中xml代码： 12345&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;       xsi:schem">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-04T17:06:37.308Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="知乎者爷">
-<meta name="twitter:description" content="2019主攻Java">
+<meta name="twitter:title" content="xml xmlns xsi schemaLocation">
+<meta name="twitter:description" content="spring中xml代码： 12345&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;       xsi:schem">
   
     <link rel="alternate" href="/atom.xml" title="知乎者爷" type="application/atom+xml">
   
@@ -68,121 +69,92 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/31/base-structure/" class="archive-article-date">
-  <time datetime="2019-01-31T05:16:43.000Z" itemprop="datePublished">Jan 31</time>
+        <section id="main"><article id="post-xml-xmlns-xsi-schemaLocation" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/05/xml-xmlns-xsi-schemaLocation/" class="article-date">
+  <time datetime="2019-02-04T16:54:02.000Z" itemprop="datePublished">2019-02-05</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/xml/">xml</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/31/base-structure/">数据结构</a>
+    <h1 class="article-title" itemprop="name">
+      xml xmlns xsi schemaLocation
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/31/java-learning/" class="archive-article-date">
-  <time datetime="2019-01-31T04:55:15.000Z" itemprop="datePublished">Jan 31</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/31/java-learning/">java范范的来说</a>
-    </h1>
-  
+        <p>spring中xml代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>xml先来看看几个概念，java项目中作为xml文件头部开头的标签，我们在好多处都可以看到，下面分别来看看代表的含义</p>
+<ul>
+<li>xmlns<ul>
+<li>xml namespaces<ul>
+<li>防止相同的标签名称在同一个xml中冲突</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>xsi<ul>
+<li>xml schema instance<ul>
+<li>业内默认用于xsd文件的命名空间</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>xsd<ul>
+<li>xml schema definition<ul>
+<li>定义xml文档结构</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>schemaLocation<ul>
+<li>schema 具体引用的资源<ul>
+<li>由key value组成</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>参考：</p>
+<p><a href="https://blog.csdn.net/lengxiao1993/article/details/77914155" target="_blank" rel="noopener">https://blog.csdn.net/lengxiao1993/article/details/77914155</a></p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/31/spring-aop/" class="archive-article-date">
-  <time datetime="2019-01-31T03:05:29.000Z" itemprop="datePublished">Jan 31</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/31/spring-aop/">spring aop</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/30/java-thread/" class="archive-article-date">
-  <time datetime="2019-01-30T14:47:45.000Z" itemprop="datePublished">Jan 30</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/05/xml-xmlns-xsi-schemaLocation/" data-id="cjrqkrma5002dr360yncs0azq" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/30/java-thread/">java线程</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/30/hello-world/" class="archive-article-date">
-  <time datetime="2019-01-29T17:53:23.647Z" itemprop="datePublished">Jan 30</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/30/hello-world/">半夜开博客，一定有话要BB</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xml/">xml</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/04/spring-bean/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">spring bean</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

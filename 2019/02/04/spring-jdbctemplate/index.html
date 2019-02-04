@@ -5,19 +5,20 @@
   
 
   
-  <title>Archives | 知乎者爷</title>
+  <title>spring-jdbctemplate | 知乎者爷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2019主攻Java">
-<meta name="keywords" content="java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="知乎者爷">
-<meta property="og:url" content="http://zhzye.github.io/archives/page/2/index.html">
+  <meta name="description" content="jdbctemplatewhat?jdbc是为了操作方便，在jdbc api之上封装的，所以我们要先明白jdbc api都做了什么？ 这就是大名鼎鼎的mysql-connector-J Mysql Connector/Jmaven 依赖： 123456&amp;lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&amp;g">
+<meta name="keywords" content="spring,jdbc,jdbc-template">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-jdbctemplate">
+<meta property="og:url" content="http://zhzye.github.io/2019/02/04/spring-jdbctemplate/index.html">
 <meta property="og:site_name" content="知乎者爷">
-<meta property="og:description" content="2019主攻Java">
+<meta property="og:description" content="jdbctemplatewhat?jdbc是为了操作方便，在jdbc api之上封装的，所以我们要先明白jdbc api都做了什么？ 这就是大名鼎鼎的mysql-connector-J Mysql Connector/Jmaven 依赖： 123456&amp;lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&amp;g">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-04T16:24:53.919Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="知乎者爷">
-<meta name="twitter:description" content="2019主攻Java">
+<meta name="twitter:title" content="spring-jdbctemplate">
+<meta name="twitter:description" content="jdbctemplatewhat?jdbc是为了操作方便，在jdbc api之上封装的，所以我们要先明白jdbc api都做了什么？ 这就是大名鼎鼎的mysql-connector-J Mysql Connector/Jmaven 依赖： 123456&amp;lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&amp;g">
   
     <link rel="alternate" href="/atom.xml" title="知乎者爷" type="application/atom+xml">
   
@@ -68,121 +69,71 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/31/base-structure/" class="archive-article-date">
-  <time datetime="2019-01-31T05:16:43.000Z" itemprop="datePublished">Jan 31</time>
+        <section id="main"><article id="post-spring-jdbctemplate" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/04/spring-jdbctemplate/" class="article-date">
+  <time datetime="2019-02-04T10:57:31.000Z" itemprop="datePublished">2019-02-04</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/31/base-structure/">数据结构</a>
+    <h1 class="article-title" itemprop="name">
+      spring-jdbctemplate
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/31/java-learning/" class="archive-article-date">
-  <time datetime="2019-01-31T04:55:15.000Z" itemprop="datePublished">Jan 31</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/31/java-learning/">java范范的来说</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/31/spring-aop/" class="archive-article-date">
-  <time datetime="2019-01-31T03:05:29.000Z" itemprop="datePublished">Jan 31</time>
-</a>
+        <h1 id="jdbctemplate"><a href="#jdbctemplate" class="headerlink" title="jdbctemplate"></a>jdbctemplate</h1><h2 id="what"><a href="#what" class="headerlink" title="what?"></a>what?</h2><p>jdbc是为了操作方便，在jdbc api之上封装的，所以我们要先明白jdbc api都做了什么？</p>
+<p>这就是大名鼎鼎的mysql-connector-J</p>
+<h2 id="Mysql-Connector-J"><a href="#Mysql-Connector-J" class="headerlink" title="Mysql Connector/J"></a>Mysql Connector/J</h2><p>maven 依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.15<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>代码实现：<a href="https://github.com/zhzye/spring/tree/master/jdbc" target="_blank" rel="noopener">https://github.com/zhzye/spring/tree/master/jdbc</a></p>
+<h2 id="how"><a href="#how" class="headerlink" title="how?"></a>how?</h2>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/31/spring-aop/">spring aop</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/30/java-thread/" class="archive-article-date">
-  <time datetime="2019-01-30T14:47:45.000Z" itemprop="datePublished">Jan 30</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/04/spring-jdbctemplate/" data-id="cjrq815vt0021r360zlca6ws9" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/30/java-thread/">java线程</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/30/hello-world/" class="archive-article-date">
-  <time datetime="2019-01-29T17:53:23.647Z" itemprop="datePublished">Jan 30</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/30/hello-world/">半夜开博客，一定有话要BB</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc-template/">jdbc-template</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav>
+<nav id="article-nav">
+  
+    <a href="/2019/02/04/spring-bean/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          spring bean
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/03/spring-AspectJ/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">spring-AspectJ</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
