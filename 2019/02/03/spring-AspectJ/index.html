@@ -7,18 +7,18 @@
   
   <title>spring-AspectJ | 知乎者爷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用方式 xml 注解">
+  <meta name="description" content="使用方式 xml 注解  what 基于java语言的aop框架 spring2.0 整合aspectJ @AspectJ是aspectJ1.5新增功能，通过JDK5注解技术，允许直接在Bean类中定义切面  依赖1234567891011121314151617181920   &amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.springframework&amp;l">
 <meta name="keywords" content="spring,aop,AspectJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring-AspectJ">
 <meta property="og:url" content="http://zhzye.github.io/2019/02/03/spring-AspectJ/index.html">
 <meta property="og:site_name" content="知乎者爷">
-<meta property="og:description" content="使用方式 xml 注解">
+<meta property="og:description" content="使用方式 xml 注解  what 基于java语言的aop框架 spring2.0 整合aspectJ @AspectJ是aspectJ1.5新增功能，通过JDK5注解技术，允许直接在Bean类中定义切面  依赖1234567891011121314151617181920   &amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.springframework&amp;l">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-03T12:46:52.634Z">
+<meta property="og:updated_time" content="2019-02-04T09:56:50.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring-AspectJ">
-<meta name="twitter:description" content="使用方式 xml 注解">
+<meta name="twitter:description" content="使用方式 xml 注解  what 基于java语言的aop框架 spring2.0 整合aspectJ @AspectJ是aspectJ1.5新增功能，通过JDK5注解技术，允许直接在Bean类中定义切面  依赖1234567891011121314151617181920   &amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.springframework&amp;l">
   
     <link rel="alternate" href="/atom.xml" title="知乎者爷" type="application/atom+xml">
   
@@ -99,7 +99,90 @@
 <li>xml</li>
 <li>注解</li>
 </ul>
-
+<h1 id="what"><a href="#what" class="headerlink" title="what"></a>what</h1><ul>
+<li>基于java语言的aop框架</li>
+<li>spring2.0 整合aspectJ</li>
+<li>@AspectJ是aspectJ1.5新增功能，通过JDK5注解技术，允许直接在Bean类中定义切面</li>
+</ul>
+<h1 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>aopalliance<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aopalliance<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-aspects<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.aspectj<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aspectjweaver<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h2 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注解一个切面<code>@Aspect</code>，用下述标签定义通知（advice）</p>
+<h1 id="通知类型"><a href="#通知类型" class="headerlink" title="通知类型"></a>通知类型</h1><ul>
+<li>@Before<ul>
+<li>前置通知<ul>
+<li>BeforeAdvice</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>@AfterReturning<ul>
+<li>后置通知<ul>
+<li>AfterReturningAdvice</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>@Around<ul>
+<li>环绕通知<ul>
+<li>MethodIntercepter</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>@AfterThrowing<ul>
+<li>异常抛出通知<ul>
+<li>ThrowAdvice</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>@After<ul>
+<li>最终执行</li>
+</ul>
+</li>
+<li>@DeclareParents<ul>
+<li>引介通知<ul>
+<li>IntroductionIntercepter</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="aspectj提供execution表达式，必须精通"><a href="#aspectj提供execution表达式，必须精通" class="headerlink" title="aspectj提供execution表达式，必须精通"></a>aspectj提供execution表达式，必须精通</h1><p>语法：execution(&lt;访问修饰符&gt;?&lt;返回类型&gt;&lt;方法名&gt;(&lt;参数&gt;)&lt;异常&gt;)</p>
+<ul>
+<li>所有类public方法<ul>
+<li>execution(public <em> </em>(..))</li>
+</ul>
+</li>
+<li>指定包所有方法<ul>
+<li>execution(<em> com.imooc.dao.</em>(..)) <code>不含子包</code></li>
+</ul>
+</li>
+<li>包和子包下所有类<ul>
+<li>execution(<em> com.imooc.dao..</em>(..))<code>包和子包下所有类</code></li>
+</ul>
+</li>
+<li>指定类所有方法<ul>
+<li>execution(<em> com.imooc.service.UserService.</em>(..))</li>
+</ul>
+</li>
+<li>指定特定接口(GenericDao)<ul>
+<li>execution(<em> com.imooc.dao.GenericDao+.</em>(..))</li>
+</ul>
+</li>
+<li>匹配所有save<ul>
+<li>execution(<em> save</em>(..))</li>
+</ul>
+</li>
+</ul>
+<h1 id="为advice增加注入joinpoint参数"><a href="#为advice增加注入joinpoint参数" class="headerlink" title="为advice增加注入joinpoint参数"></a>为advice增加注入joinpoint参数</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Before</span>(value = <span class="string">"execution(* sa*(..))"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"before注入"</span> + joinPoint);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="后置通知，通过配置返回值参数，可以获取执行后的return"><a href="#后置通知，通过配置返回值参数，可以获取执行后的return" class="headerlink" title="后置通知，通过配置返回值参数，可以获取执行后的return"></a>后置通知，通过配置返回值参数，可以获取执行后的return</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AfterReturning</span>(value = <span class="string">"execution(* sa*(..))"</span>, returning = <span class="string">"result"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">after</span><span class="params">(JoinPoint joinPoint, Object result)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"after注入 "</span> + joinPoint + <span class="string">" "</span> + result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="环绕通知"><a href="#环绕通知" class="headerlink" title="环绕通知"></a>环绕通知</h1><p>如果<code>ProceedingJoinPoint</code>不被调用proceed()方法，则被阻止运行了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Around</span>(value = <span class="string">"execution(* hi(..))"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">around</span><span class="params">(ProceedingJoinPoint proceedingJoinPoint)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"环绕===before"</span>);</span><br><span class="line">    Object object = proceedingJoinPoint.proceed();</span><br><span class="line">    System.out.println(<span class="string">"环绕===after"</span>);</span><br><span class="line">    <span class="keyword">return</span> object;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="异常抛出通知"><a href="#异常抛出通知" class="headerlink" title="异常抛出通知"></a>异常抛出通知</h1><p>如果存在运行时异常，会被触发，如:<code>1/0</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AfterThrowing</span>(value = <span class="string">"execution(* exeThrowException(..))"</span>, throwing = <span class="string">"e"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterThrow</span><span class="params">(Throwable e)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"异常抛出通知 e "</span> + e.getMessage());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="最终通知"><a href="#最终通知" class="headerlink" title="最终通知"></a>最终通知</h1><p>无论是否包含异常都会被执行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@After</span>(value = <span class="string">"execution(* exeThrowException(..))"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finalDO</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"最终通知"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
