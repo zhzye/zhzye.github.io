@@ -70,6 +70,191 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-spring-事务管理" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/05/spring-事务管理/" class="article-date">
+  <time datetime="2019-02-05T11:47:59.000Z" itemprop="datePublished">2019-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/05/spring-事务管理/">spring 事务管理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h2 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务"></a>什么是事务</h2><ul>
+<li>事务<ul>
+<li>一般特指数据库事务，作为一个程序执行单元执行的一系列操作，要么执行，要么全不执行</li>
+</ul>
+</li>
+</ul>
+<h2 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h2><p>ACID</p>
+<ul>
+<li>原子性 atomicity<ul>
+<li>不可分割的工作单位</li>
+<li>封装了一组操作</li>
+<li>语法上处理</li>
+</ul>
+</li>
+<li>一致性 consistency<ul>
+<li>数据库从<code>一个一致性状态</code>变到<code>另一个一致性状态</code></li>
+<li>业务规则上</li>
+</ul>
+</li>
+<li>隔离性<ul>
+<li>一个事务执行不能被其他事务干扰</li>
+<li>从并发上</li>
+</ul>
+</li>
+<li>持久性<ul>
+<li>一旦提交，他的数据库的改变应该是<code>永久的</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="事务并发的问题"><a href="#事务并发的问题" class="headerlink" title="事务并发的问题"></a>事务并发的问题</h2><ul>
+<li>脏读<ul>
+<li>没提交的事务A中update的数据，在事务B可见<ul>
+<li>不同事务的内存空间数据互不可见，只有commit才有影响</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>不可重复读<ul>
+<li>事务A读取数据id为1，事务B修改数据id为1并提交事务，事务A中再次读取id为1，1被事务B已提交的事务修改了<ul>
+<li>解决方式对数据id为1加锁，如果被一个事务读取，其他事务不能修改</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>幻读<ul>
+<li>事务A修改所有数据某字段为0，这个时候事务B新增数据id=100，且某字段不为0，这个时候事务A可以看到事务B新增的字段<ul>
+<li>解决方式对表加锁</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="mysql事务"><a href="#mysql事务" class="headerlink" title="mysql事务"></a>mysql事务</h2><ul>
+<li>Innodb引擎支持事务<ul>
+<li>show engines<ul>
+<li><img src="/images/2019/02/05/8008e040-293d-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190205 下午7.59.16.png"></li>
+</ul>
+</li>
+<li>my.ini 修改默认引擎<ul>
+<li>default-storage-engine = Innodb</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事务sql<ul>
+<li>默认隐式，每一条都是一个事务</li>
+<li>begin<ul>
+<li>显示开启事务</li>
+</ul>
+</li>
+<li>commit</li>
+<li>rollback</li>
+<li>show variables like ‘transaction_isolation’;<ul>
+<li>查看隔离级别<ul>
+<li>select @@tx_isolation; mysql8.0废弃</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>set session transaction isolation level xx<ul>
+<li>设置当前回话隔离级别</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事务的隔离级别【隔离级别越高，性能越低，默认级别为rr】<ul>
+<li>read-uncommitted</li>
+<li>read-committed<ul>
+<li>脏读解决</li>
+</ul>
+</li>
+<li>repeatable-read<ul>
+<li>脏读，不可重复读解决</li>
+</ul>
+</li>
+<li>serializable<ul>
+<li>脏读，不可重复读，幻读解决</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="mysql隔离级别代码"><a href="#mysql隔离级别代码" class="headerlink" title="mysql隔离级别代码"></a>mysql隔离级别代码</h2><h3 id="read-uncommitted"><a href="#read-uncommitted" class="headerlink" title="read uncommitted"></a>read uncommitted</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置为读未提</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">session</span> <span class="keyword">transaction</span> <span class="keyword">isolation</span> <span class="keyword">level</span> <span class="keyword">read</span> uncommitted;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ddl</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> demo_tx;</span><br><span class="line"><span class="keyword">use</span> demo_tx;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">users</span>(uid <span class="built_in">bigint</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span> auto_increment, uname <span class="built_in">varchar</span>(<span class="number">200</span>), primary <span class="keyword">key</span>(<span class="string">`uid`</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment"># 事务A</span></span><br><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 事务B</span></span><br><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 事务A</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">users</span>(uname) <span class="keyword">values</span>(<span class="string">'a'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 事务B</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> uname = <span class="string">'a'</span>;</span><br><span class="line"><span class="comment">## 结论1能看到事务A未提交的记录，说明是`读未提交`，没有在不同的session间隔离可见性，在不commit时，需要隔离</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 事务A</span></span><br><span class="line"><span class="keyword">rollback</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 事务B</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> uname = <span class="string">'a'</span>;</span><br><span class="line"><span class="comment">## 随着A回滚，B也看不到记录了，再次证明上面的结论1</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/2019/02/05/aa88b5d0-2941-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190205 下午8.28.19.png"></p>
+<h3 id="read-committed"><a href="#read-committed" class="headerlink" title="read committed"></a>read committed</h3><p>初始表数据<br><img src="/images/2019/02/05/ab7f0740-2942-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190205 下午8.35.53.png"><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置为读未提</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">session</span> <span class="keyword">transaction</span> <span class="keyword">isolation</span> <span class="keyword">level</span> <span class="keyword">read</span> committed;</span><br><span class="line"></span><br><span class="line"><span class="comment"># tx A</span></span><br><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># tx B</span></span><br><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># tx A</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">users</span>(uname) <span class="keyword">values</span>(<span class="string">'c'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># tx B</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span>;</span><br><span class="line"><span class="comment"># 可以看到新增的记录c，在tx A的session中，tx B中不可见</span></span><br><span class="line"><span class="comment"># 可以看到原来表中记录b，下面tx A修改b为b1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># tx A</span></span><br><span class="line"><span class="keyword">update</span> <span class="keyword">users</span> <span class="keyword">set</span> uname = <span class="string">'b1'</span> <span class="keyword">where</span> uname = <span class="string">'b'</span>;</span><br><span class="line"><span class="keyword">commit</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># tx B</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span>;</span><br><span class="line"><span class="comment"># 再次查看b数据为b1，tx B再两次查询中间被事务A修改了b的值，同时记录c也不增加了</span></span><br><span class="line"><span class="comment"># 上面实验证明了，读已提交同时存在可重复读和幻读问题</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/2019/02/05/6960ccd0-2943-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190205 下午8.41.08.png"></p>
+<h2 id="repeatable-read"><a href="#repeatable-read" class="headerlink" title="repeatable read"></a>repeatable read</h2><p>原始数据：<img src="/images/2019/02/05/91cc3e20-2943-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190205 下午8.42.48.png"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">session</span> <span class="keyword">transaction</span> <span class="keyword">isolation</span> <span class="keyword">level</span> repeatable <span class="keyword">read</span>;</span><br><span class="line"><span class="comment"># tx A</span></span><br><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># tx B</span></span><br><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># tx A</span></span><br><span class="line"><span class="keyword">update</span> <span class="keyword">users</span> <span class="keyword">set</span> uname = <span class="string">'b11'</span> <span class="keyword">where</span> uname = <span class="string">'b1'</span>;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">users</span>(uname) <span class="keyword">values</span>(<span class="string">'d'</span>);</span><br><span class="line"><span class="keyword">commit</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># tx B</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2019/02/05/3800eb10-2944-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190205 下午8.46.41.png"></p>
+<p>上面的截图，说明，mysql 8 rr级别解决了幻读和可重复读问题</p>
+<ul>
+<li>拓展阅读：<ul>
+<li><a href="https://blog.csdn.net/cweeyii/article/details/70991230" target="_blank" rel="noopener">https://blog.csdn.net/cweeyii/article/details/70991230</a> </li>
+<li><a href="https://blog.csdn.net/tb3039450/article/details/66475638" target="_blank" rel="noopener">https://blog.csdn.net/tb3039450/article/details/66475638</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="jdbc事务"><a href="#jdbc事务" class="headerlink" title="jdbc事务"></a>jdbc事务</h2><ul>
+<li>Connection管理事务<ul>
+<li>setAutoCommit</li>
+<li>commit</li>
+<li>rollback</li>
+</ul>
+</li>
+<li>隔离级别枚举<ul>
+<li>NONE</li>
+<li>uncommited</li>
+<li>commited</li>
+<li>repeatable</li>
+<li>seriablizble</li>
+</ul>
+</li>
+<li>隔离设置<ul>
+<li>getTransaction</li>
+<li>setTransaction</li>
+</ul>
+</li>
+</ul>
+<h2 id="spring事务"><a href="#spring事务" class="headerlink" title="spring事务"></a>spring事务</h2><h3 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h3><ul>
+<li>jdbc</li>
+<li>spring ioc aop</li>
+<li>mysql</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/05/spring-事务管理/" data-id="cjrrp9wln002nr360zi7b5suf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tx/">tx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/事务/">事务</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java-匿名内部类" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/05/java-匿名内部类/" class="article-date">
@@ -661,68 +846,6 @@
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gc/">gc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拓展阅读/">拓展阅读</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java-泛型" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/31/java-泛型/" class="article-date">
-  <time datetime="2019-01-31T13:07:14.000Z" itemprop="datePublished">2019-01-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/31/java-泛型/">java-泛型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>可以支持<code>任何数据类型</code></p>
-<ul>
-<li>不可以是基础数据类型<ul>
-<li>有哪些<ul>
-<li>boolean</li>
-<li>char</li>
-<li>byte short int long</li>
-<li>float double</li>
-</ul>
-</li>
-<li>对应的包装类可以使用<ul>
-<li>Boolean</li>
-<li>Char</li>
-<li>Byte Short Int Long</li>
-<li>Float Double</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/01/31/java-泛型/" data-id="cjrkmwk6e000qr360mg2275f1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/泛型/">泛型</a></li></ul>
 
     </footer>
   </div>
