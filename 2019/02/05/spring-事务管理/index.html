@@ -21,7 +21,8 @@
 <meta property="og:image" content="http://zhzye.github.io/images/2019/02/05/6960ccd0-2943-11e9-ae81-ed119688c9cb.png">
 <meta property="og:image" content="http://zhzye.github.io/images/2019/02/05/91cc3e20-2943-11e9-ae81-ed119688c9cb.png">
 <meta property="og:image" content="http://zhzye.github.io/images/2019/02/05/3800eb10-2944-11e9-ae81-ed119688c9cb.png">
-<meta property="og:updated_time" content="2019-02-05T12:58:23.436Z">
+<meta property="og:image" content="http://zhzye.github.io/images/2019/02/05/f2f07f70-2954-11e9-ae81-ed119688c9cb.png">
+<meta property="og:updated_time" content="2019-02-05T14:47:26.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring 事务管理">
 <meta name="twitter:description" content="事务什么是事务 事务 一般特指数据库事务，作为一个程序执行单元执行的一系列操作，要么执行，要么全不执行    事务的特性ACID  原子性 atomicity 不可分割的工作单位 封装了一组操作 语法上处理   一致性 consistency 数据库从一个一致性状态变到另一个一致性状态 业务规则上   隔离性 一个事务执行不能被其他事务干扰 从并发上   持久性 一旦提交，他的数据库的改变应该是永">
@@ -240,12 +241,78 @@
 </ul>
 </li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveStudentAndClassWithOpenTx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    getDbConnection();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        conn.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">        statement.execute(<span class="string">"insert into classes(cname) values('classA')"</span>);</span><br><span class="line">        statement.execute(<span class="string">"insert into users(uname, cid) values ('userA', 1)"</span>);</span><br><span class="line">        conn.commit();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            conn.rollback();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e1) &#123;</span><br><span class="line">            e1.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="spring事务"><a href="#spring事务" class="headerlink" title="spring事务"></a>spring事务</h2><h3 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h3><ul>
 <li>jdbc</li>
 <li>spring ioc aop</li>
 <li>mysql</li>
 </ul>
-
+<h3 id="what"><a href="#what" class="headerlink" title="what"></a>what</h3><ul>
+<li>Transaction Definition<ul>
+<li>事务<ul>
+<li>传播行为</li>
+<li>隔离级别</li>
+<li>默认超时</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Transation Status<ul>
+<li>正在运行的事务</li>
+</ul>
+</li>
+<li>PlatformTransactionManager 接口<ul>
+<li>实现<ul>
+<li>DataSourceTransactionManager</li>
+<li>JpaTransationManager</li>
+<li>HibernateTransactionManager</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>隔离级别<ul>
+<li>DEFAULT</li>
+<li>uncommitted</li>
+<li>committed</li>
+<li>repeatable</li>
+<li>seriablizable</li>
+</ul>
+</li>
+<li>默认超时<ul>
+<li>TIMEOUT_DEFAULT<ul>
+<li>30秒</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事务传播行为<ul>
+<li>PROPAGATION_REQUIRED<ul>
+<li>支持事务，当面没有就new一个事务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ul>
+<li>依赖<ul>
+<li>spring-core</li>
+<li>beans</li>
+<li>context</li>
+<li>expression</li>
+<li>aop</li>
+<li>aspectj</li>
+<li>jdbc</li>
+<li>tx<h4 id="编程式事务"><a href="#编程式事务" class="headerlink" title="编程式事务"></a>编程式事务</h4></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhzye.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.zhzye.dao.OrderDao;</span><br><span class="line"><span class="keyword">import</span> com.zhzye.dao.ProductDao;</span><br><span class="line"><span class="keyword">import</span> com.zhzye.entity.Order;</span><br><span class="line"><span class="keyword">import</span> com.zhzye.entity.Product;</span><br><span class="line"><span class="keyword">import</span> com.zhzye.service.OrderService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.PlatformTransactionManager;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.TransactionDefinition;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.TransactionStatus;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderServiceImpl</span> <span class="keyword">implements</span> <span class="title">OrderService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> OrderDao orderDao;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ProductDao productDao;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> PlatformTransactionManager platformTransactionManager;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TransactionDefinition transactionDefinition;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveOrder</span><span class="params">(Order order, List&lt;Product&gt; productList)</span> </span>&#123;</span><br><span class="line">        TransactionStatus transactionStatus = platformTransactionManager.getTransaction(transactionDefinition);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            orderDao.saveOrder(order);</span><br><span class="line">            <span class="keyword">for</span> (Product product : productList) &#123;</span><br><span class="line">                productDao.saveProduct(product);</span><br><span class="line">            &#125;</span><br><span class="line">            platformTransactionManager.commit(transactionStatus);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            platformTransactionManager.rollback(transactionStatus);</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"com.mysql.jdbc.Driver"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost:3306/school?useUnicode=true&amp;amp;characterEncoding=utf-8"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"root"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jdbcTemplate"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.core.JdbcTemplate"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.zhzye"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"platformTransactionManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"transactionDefinition"</span> <span class="attr">class</span>=<span class="string">"org.springframework.transaction.support.DefaultTransactionDefinition"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--可以不声明，为了演示可选配置--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"propagationBehaviorName"</span> <span class="attr">value</span>=<span class="string">"PROPAGATION_REQUIRED"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>大家可以去掉事务代码，试试在不同表同时新增时候，如果不用事务，会发生什么样的不一致？</p>
+<p>发生异常之后的sql不执行，异常之前sql执行，会破坏一致性</p>
+<p>不一致统计，如图所示：</p>
+<p><img src="/images/2019/02/05/f2f07f70-2954-11e9-ae81-ed119688c9cb.png" alt="屏幕快照 20190205 下午10.46.43.png"></p>
+<h4 id="声明式事务"><a href="#声明式事务" class="headerlink" title="声明式事务"></a>声明式事务</h4>
       
     </div>
     <footer class="article-footer">
@@ -289,7 +356,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AspectJ/">AspectJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RunWith/">RunWith</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/">aop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bean/">bean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gc/">gc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc-template/">jdbc-template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xml/">xml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展阅读/">拓展阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时间复杂度/">时间复杂度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/泛型/">泛型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语言基础/">语言基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软素质/">软素质</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AspectJ/">AspectJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RunWith/">RunWith</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/">aop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bean/">bean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gc/">gc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc-template/">jdbc-template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tx/">tx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xml/">xml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务/">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展阅读/">拓展阅读</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数组/">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时间复杂度/">时间复杂度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/泛型/">泛型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语言基础/">语言基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软素质/">软素质</a></li></ul>
     </div>
   </div>
 
@@ -299,7 +366,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AspectJ/" style="font-size: 10px;">AspectJ</a> <a href="/tags/RunWith/" style="font-size: 10px;">RunWith</a> <a href="/tags/aop/" style="font-size: 13.33px;">aop</a> <a href="/tags/bean/" style="font-size: 10px;">bean</a> <a href="/tags/gc/" style="font-size: 10px;">gc</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbc/" style="font-size: 10px;">jdbc</a> <a href="/tags/jdbc-template/" style="font-size: 10px;">jdbc-template</a> <a href="/tags/spring/" style="font-size: 16.67px;">spring</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/拓展阅读/" style="font-size: 10px;">拓展阅读</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/时间复杂度/" style="font-size: 10px;">时间复杂度</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/语言基础/" style="font-size: 10px;">语言基础</a> <a href="/tags/软素质/" style="font-size: 10px;">软素质</a>
+      <a href="/tags/AspectJ/" style="font-size: 10px;">AspectJ</a> <a href="/tags/RunWith/" style="font-size: 10px;">RunWith</a> <a href="/tags/aop/" style="font-size: 13.33px;">aop</a> <a href="/tags/bean/" style="font-size: 10px;">bean</a> <a href="/tags/gc/" style="font-size: 10px;">gc</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbc/" style="font-size: 10px;">jdbc</a> <a href="/tags/jdbc-template/" style="font-size: 10px;">jdbc-template</a> <a href="/tags/spring/" style="font-size: 16.67px;">spring</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/tx/" style="font-size: 10px;">tx</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a> <a href="/tags/事务/" style="font-size: 10px;">事务</a> <a href="/tags/匿名内部类/" style="font-size: 10px;">匿名内部类</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/拓展阅读/" style="font-size: 10px;">拓展阅读</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/时间复杂度/" style="font-size: 10px;">时间复杂度</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a> <a href="/tags/语言基础/" style="font-size: 10px;">语言基础</a> <a href="/tags/软素质/" style="font-size: 10px;">软素质</a>
     </div>
   </div>
 
@@ -321,6 +388,14 @@
       <ul>
         
           <li>
+            <a href="/2019/02/05/spring-事务管理/">spring 事务管理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/05/java-匿名内部类/">java 匿名内部类</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/05/xml-xmlns-xsi-schemaLocation/">xml xmlns xsi schemaLocation</a>
           </li>
         
@@ -330,14 +405,6 @@
         
           <li>
             <a href="/2019/02/04/spring-jdbctemplate/">spring-jdbctemplate</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/03/spring-AspectJ/">spring-AspectJ</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/03/spring-RunWith/">spring-RunWith</a>
           </li>
         
       </ul>
