@@ -70,6 +70,175 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-spring-RunWith" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/03/spring-RunWith/" class="article-date">
+  <time datetime="2019-02-03T12:06:10.000Z" itemprop="datePublished">2019-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/03/spring-RunWith/">spring-RunWith</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="RunWith"><a href="#RunWith" class="headerlink" title="@RunWith"></a>@RunWith</h2><p>如果单测想拿到Spring容器中的测试用例，那么最简单的方式就是加一个注解</p>
+<p>@RunWith(SpringJUnit4ClassRunner.class)<br>@ContextConfiguration(“classpath:applicationContext.xml”)</p>
+<p>这个相当于执行了ApplicationContext的工厂方法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/03/spring-RunWith/" data-id="cjrov1l3a001qr360trjivtoq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RunWith/">RunWith</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java-语言基础一篇汇" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/01/java-语言基础一篇汇/" class="article-date">
+  <time datetime="2019-02-01T01:19:33.000Z" itemprop="datePublished">2019-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/01/java-语言基础一篇汇/">java-语言基础一篇汇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="语言基础"><a href="#语言基础" class="headerlink" title="语言基础"></a>语言基础</h1><p>把java语言中所有琐碎的知识点在这里都玩一遍，地基不牢固，是要出问题的！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/01/java-语言基础一篇汇/" data-id="cjrld2b4a001fr360xd297fv4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语言基础/">语言基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java-时间复杂度" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/01/java-时间复杂度/" class="article-date">
+  <time datetime="2019-02-01T00:53:03.000Z" itemprop="datePublished">2019-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/01/java-时间复杂度/">java-时间复杂度</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>有区分吗？</p>
+<p>有</p>
+<ul>
+<li>O(1)</li>
+<li>O(n)</li>
+<li>O(lgn)</li>
+<li>O(nlgn)</li>
+<li>O(n^2)</li>
+</ul>
+<p>大O描述了算法运行时间和输入数据的关系</p>
+<p>看一段代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span>[] data)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span><br><span class="line">            sum += data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>时间复杂度是o(n)<ul>
+<li>n是data中元素的个数</li>
+<li>实际的算法应该是线性的，实际时间T = c1*n + c2<ul>
+<li>忽略常数c1 c2<ul>
+<li>都是o(n)，因为不同语言生成指令不一样，不同cpu执行效率也不一样</li>
+<li>所以我们要忽律常数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>比较<ul>
+<li>渐进时间复杂度：描述的是n趋近于无穷的情况<ul>
+<li>在数据量n小的时候，常数也可以起作用，在优化具体量级算法时候可以考虑进去</li>
+</ul>
+</li>
+<li>算法复杂度分析是关注最坏的情况</li>
+</ul>
+</li>
+</ul>
+<h3 id="均摊时间复杂度"><a href="#均摊时间复杂度" class="headerlink" title="均摊时间复杂度"></a>均摊时间复杂度</h3><p>动态数组的resize（因为要动态改变数组的capacity）的时间复杂度是o(n)，但是对整个性能影响大吗？</p>
+<p>均摊复杂度是将resize中带来的操作次数，平均到每个add操作中，这样，我么相当于操作了2次基本操作，平均下来，时间复杂度还是o（1）</p>
+<p>均摊在这种案例中，比计算最坏情况更有意义</p>
+<h3 id="复杂度震荡"><a href="#复杂度震荡" class="headerlink" title="复杂度震荡"></a>复杂度震荡</h3><p>我们是不是只是需要考虑resize什么时候触发就可以知道，每一次add操作应该平均分摊几次操作，是2次，对的，一般情况是这样的，但是我们要考虑resize的临界情况，因为add和delete被频繁触发，这样分摊到每一次的次数会发生变化，一直在上升，这样因为震荡，当一起考虑add和delete的时候，复杂度又成为了o(n)</p>
+<p>怎么解决？</p>
+<p>eager 变为 lazy，当resize时候，缩小的时候请lazy进行resize，留有buffer去缓冲触发的频率</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/01/java-时间复杂度/" data-id="cjrlc48s0001ar36054gashze" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时间复杂度/">时间复杂度</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java-垃圾回收GC" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/31/java-垃圾回收GC/" class="article-date">
@@ -852,50 +1021,11 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/30/hello-world/" class="article-date">
-  <time datetime="2019-01-29T17:53:23.647Z" itemprop="datePublished">2019-01-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/30/hello-world/">半夜开博客，一定有话要BB</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>妈的！工作7，8年，一直在写业务，很多技术侧的沉淀不够多，技术深度不够，最近在工作上感受到了乏力！</p>
-<p>所以这里，我tm的匿名开博客，以后每日最少写一篇技术文章，做好深度的沉淀！</p>
-<p>2019年，主要研究Java技术栈内容</p>
-<h2 id="加油"><a href="#加油" class="headerlink" title="加油"></a>加油</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/01/30/hello-world/" data-id="cjrk8sj620000r360n6s368em" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>

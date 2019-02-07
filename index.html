@@ -70,6 +70,198 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-持续集成-持续部署" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/07/持续集成-持续部署/" class="article-date">
+  <time datetime="2019-02-07T06:58:21.000Z" itemprop="datePublished">2019-02-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/07/持续集成-持续部署/">持续集成&amp;持续部署</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="持续集成-amp-持续部署"><a href="#持续集成-amp-持续部署" class="headerlink" title="持续集成&amp;持续部署"></a>持续集成&amp;持续部署</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>jenkins</li>
+<li>gitlab</li>
+<li>maven</li>
+<li>tomcat</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/07/持续集成-持续部署/" data-id="cjru9t4jm0039r360fva53fgg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-nginx" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/07/nginx/" class="article-date">
+  <time datetime="2019-02-07T02:28:49.000Z" itemprop="datePublished">2019-02-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/07/nginx/">nginx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><h2 id="what"><a href="#what" class="headerlink" title="what"></a>what</h2><ul>
+<li>Web服务器</li>
+<li>反向代理服务器</li>
+<li>电子邮件（IMAP/POP3/SMTP）代理服务器</li>
+</ul>
+<h3 id="with-java"><a href="#with-java" class="headerlink" title="with java"></a>with java</h3><p>Nginx反向代理服务器（负载均衡）</p>
+<p>Nginx + Tomcat</p>
+<ul>
+<li>动态静态分离<ul>
+<li>Nginx处理静态页面</li>
+<li>Tomcat处理JSP页面</li>
+</ul>
+</li>
+</ul>
+<h4 id="安装java-centos7"><a href="#安装java-centos7" class="headerlink" title="安装java@centos7"></a>安装java@centos7</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum search java-1.8</span><br><span class="line">yum -y install java-1.8.0-openjdk-devel.x86_64</span><br><span class="line">vim /etc/profile</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<p>设置环境变量<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64</span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br></pre></td></tr></table></figure></p>
+<h4 id="安装tomcat"><a href="#安装tomcat" class="headerlink" title="安装tomcat"></a>安装tomcat</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget http://mirrors.shu.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.zip</span><br><span class="line">yum install unzip</span><br><span class="line">unzip apache-tomcat-9.0.14.zip</span><br><span class="line">chmod +x /usr/local/tomcat/bin/*.sh</span><br><span class="line">sh /usr/local/tomcat/bin/startup.sh</span><br></pre></td></tr></table></figure>
+<p>打开浏览器，输入：http://机器IP地址:8080/</p>
+<h4 id="配置tomcat"><a href="#配置tomcat" class="headerlink" title="配置tomcat"></a>配置tomcat</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/tomcat/conf/tomcat-users.xml</span><br></pre></td></tr></table></figure>
+<p>增加权限<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-gui"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"admin-gui"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">user</span> <span class="attr">username</span>=<span class="string">"tomcat"</span> <span class="attr">password</span>=<span class="string">"1"</span> <span class="attr">roles</span>=<span class="string">"admin-gui,manager-gui"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>重启<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh /usr/local/tomcat/bin/shutdown.sh</span><br><span class="line">sh /usr/local/tomcat/bin/startup.sh</span><br></pre></td></tr></table></figure></p>
+<p>ip权限赋予</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim  -O /usr/local/tomcat/webapps/manager/META-INF/context.xml  /usr/local/tomcat/webapps/host-manager/META-INF/context.xml</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.valves.RemoteAddrValve"</span>                                       |<span class="attr">rg</span>\<span class="attr">.apache</span>\<span class="attr">.catalina</span>\<span class="attr">.filters</span>\<span class="attr">.CsrfPreventionFilter</span>\$<span class="attr">LruCache</span>(?<span class="attr">:</span>\$<span class="attr">1</span>)?|<span class="attr">java</span>\<span class="attr">.util</span>\<span class="attr">.</span>(?<span class="attr">:Linked</span>)?<span class="attr">HashMap</span>"</span></span><br><span class="line"><span class="tag">         <span class="attr">allow</span>=<span class="string">"^.*$"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 下载源码</span><br><span class="line">wget http://120.52.51.15/nginx.org/download/nginx-1.15.8.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 为编译安装gcc</span><br><span class="line">yum -y install gcc-c++</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> configure</span><br><span class="line"> ./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> ./configure: error: the HTTP rewrite module requires the PCRE library.</span><br><span class="line">You can either disable the module by using --without-http_rewrite_module</span><br><span class="line">option</span><br><span class="line">yum -y install pcre-devel openssl openssl-devel</span><br></pre></td></tr></table></figure>
+<p>配置nginx<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">upstream tomcats &#123;</span><br><span class="line">        server localhost:8080 weight=1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name blog.zhzye.com;</span><br><span class="line"></span><br><span class="line">        location ~ \.jsp$ &#123;</span><br><span class="line">            index index.jsp;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">            proxy_redirect off;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ \.(htm|js|css|gif|png|jpg|bmp|swf|svg)$ &#123;</span><br><span class="line">            expires 30d;</span><br><span class="line">            root /usr/local/tomcat/webapps/ROOT;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="内部组成"><a href="#内部组成" class="headerlink" title="内部组成"></a>内部组成</h3><ul>
+<li><code>内核</code>和<code>模块</code></li>
+<li>模块<ul>
+<li>核心模块<ul>
+<li>HTTP模块、EVENT模块和MAIL模块</li>
+</ul>
+</li>
+<li>基础模块<ul>
+<li>HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块</li>
+</ul>
+</li>
+<li>第三方模块<ul>
+<li>HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="参看资料"><a href="#参看资料" class="headerlink" title="参看资料"></a>参看资料</h1><p><a href="https://segmentfault.com/a/1190000007803704" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007803704</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/07/nginx/" data-id="cjru06ioy0034r3600aa0b2v4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spring-做个web项目" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/07/spring-做个web项目/" class="article-date">
+  <time datetime="2019-02-07T01:35:15.000Z" itemprop="datePublished">2019-02-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/07/spring-做个web项目/">spring 做个web项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="web项目"><a href="#web项目" class="headerlink" title="web项目"></a>web项目</h1><h2 id="pre"><a href="#pre" class="headerlink" title="pre"></a>pre</h2><ul>
+<li>mybatis</li>
+<li>spring<ul>
+<li>ioc</li>
+<li>aop</li>
+</ul>
+</li>
+<li>servlet<ul>
+<li><a href="http://www.runoob.com/servlet/servlet-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/servlet/servlet-tutorial.html</a></li>
+</ul>
+</li>
+<li>jsp</li>
+<li>mysql</li>
+</ul>
+<h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><ul>
+<li>servlet由web容器管理，service对象由ioc容器管理<ul>
+<li>无法注入service依赖到servlet，因为不是一个容器</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h2 id="jstl"><a href="#jstl" class="headerlink" title="jstl"></a>jstl</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/02/07/spring-做个web项目/" data-id="cjrty9mcm002yr360o8l6nvqt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-sss" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/06/sss/" class="article-date">
@@ -759,180 +951,11 @@
 
 
   
-    <article id="post-spring-RunWith" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/03/spring-RunWith/" class="article-date">
-  <time datetime="2019-02-03T12:06:10.000Z" itemprop="datePublished">2019-02-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/03/spring-RunWith/">spring-RunWith</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="RunWith"><a href="#RunWith" class="headerlink" title="@RunWith"></a>@RunWith</h2><p>如果单测想拿到Spring容器中的测试用例，那么最简单的方式就是加一个注解</p>
-<p>@RunWith(SpringJUnit4ClassRunner.class)<br>@ContextConfiguration(“classpath:applicationContext.xml”)</p>
-<p>这个相当于执行了ApplicationContext的工厂方法。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/02/03/spring-RunWith/" data-id="cjrov1l3a001qr360trjivtoq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RunWith/">RunWith</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java-语言基础一篇汇" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/01/java-语言基础一篇汇/" class="article-date">
-  <time datetime="2019-02-01T01:19:33.000Z" itemprop="datePublished">2019-02-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/01/java-语言基础一篇汇/">java-语言基础一篇汇</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="语言基础"><a href="#语言基础" class="headerlink" title="语言基础"></a>语言基础</h1><p>把java语言中所有琐碎的知识点在这里都玩一遍，地基不牢固，是要出问题的！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/02/01/java-语言基础一篇汇/" data-id="cjrld2b4a001fr360xd297fv4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语言基础/">语言基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java-时间复杂度" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/01/java-时间复杂度/" class="article-date">
-  <time datetime="2019-02-01T00:53:03.000Z" itemprop="datePublished">2019-02-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/01/java-时间复杂度/">java-时间复杂度</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>有区分吗？</p>
-<p>有</p>
-<ul>
-<li>O(1)</li>
-<li>O(n)</li>
-<li>O(lgn)</li>
-<li>O(nlgn)</li>
-<li>O(n^2)</li>
-</ul>
-<p>大O描述了算法运行时间和输入数据的关系</p>
-<p>看一段代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span>[] data)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span><br><span class="line">            sum += data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>时间复杂度是o(n)<ul>
-<li>n是data中元素的个数</li>
-<li>实际的算法应该是线性的，实际时间T = c1*n + c2<ul>
-<li>忽略常数c1 c2<ul>
-<li>都是o(n)，因为不同语言生成指令不一样，不同cpu执行效率也不一样</li>
-<li>所以我们要忽律常数</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>比较<ul>
-<li>渐进时间复杂度：描述的是n趋近于无穷的情况<ul>
-<li>在数据量n小的时候，常数也可以起作用，在优化具体量级算法时候可以考虑进去</li>
-</ul>
-</li>
-<li>算法复杂度分析是关注最坏的情况</li>
-</ul>
-</li>
-</ul>
-<h3 id="均摊时间复杂度"><a href="#均摊时间复杂度" class="headerlink" title="均摊时间复杂度"></a>均摊时间复杂度</h3><p>动态数组的resize（因为要动态改变数组的capacity）的时间复杂度是o(n)，但是对整个性能影响大吗？</p>
-<p>均摊复杂度是将resize中带来的操作次数，平均到每个add操作中，这样，我么相当于操作了2次基本操作，平均下来，时间复杂度还是o（1）</p>
-<p>均摊在这种案例中，比计算最坏情况更有意义</p>
-<h3 id="复杂度震荡"><a href="#复杂度震荡" class="headerlink" title="复杂度震荡"></a>复杂度震荡</h3><p>我们是不是只是需要考虑resize什么时候触发就可以知道，每一次add操作应该平均分摊几次操作，是2次，对的，一般情况是这样的，但是我们要考虑resize的临界情况，因为add和delete被频繁触发，这样分摊到每一次的次数会发生变化，一直在上升，这样因为震荡，当一起考虑add和delete的时候，复杂度又成为了o(n)</p>
-<p>怎么解决？</p>
-<p>eager 变为 lazy，当resize时候，缩小的时候请lazy进行resize，留有buffer去缓冲触发的频率</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/02/01/java-时间复杂度/" data-id="cjrlc48s0001ar36054gashze" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时间复杂度/">时间复杂度</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
