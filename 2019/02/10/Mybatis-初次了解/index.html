@@ -5,20 +5,20 @@
   
 
   
-  <title>持续集成&amp;持续部署 | 知乎者爷</title>
+  <title>Mybatis 初次了解 | 知乎者爷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="持续集成&amp;amp;持续部署概念 jenkins gitlab maven tomcat">
-<meta name="keywords" content="java">
+  <meta name="description" content="what? orm持久层框架的佼佼者 object relational mapping   实现sql和java代码分离 优秀功能 动态sql 缓存 插件pageHelper    数组为参数 sql中使用in，查询的值封装到数组中 批量操作数据，操作的数据封装到数组中  mybatis参数处理方式 单参数 自动进行参数赋值 #{id}     多参数 JavaBean传递参数 Map接口 注解">
+<meta name="keywords" content="mybatis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="持续集成&amp;持续部署">
-<meta property="og:url" content="http://zhzye.github.io/2019/02/07/持续集成-持续部署/index.html">
+<meta property="og:title" content="Mybatis 初次了解">
+<meta property="og:url" content="http://zhzye.github.io/2019/02/10/Mybatis-初次了解/index.html">
 <meta property="og:site_name" content="知乎者爷">
-<meta property="og:description" content="持续集成&amp;amp;持续部署概念 jenkins gitlab maven tomcat">
+<meta property="og:description" content="what? orm持久层框架的佼佼者 object relational mapping   实现sql和java代码分离 优秀功能 动态sql 缓存 插件pageHelper    数组为参数 sql中使用in，查询的值封装到数组中 批量操作数据，操作的数据封装到数组中  mybatis参数处理方式 单参数 自动进行参数赋值 #{id}     多参数 JavaBean传递参数 Map接口 注解">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-07T06:58:21.521Z">
+<meta property="og:updated_time" content="2019-02-12T11:55:41.951Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="持续集成&amp;持续部署">
-<meta name="twitter:description" content="持续集成&amp;amp;持续部署概念 jenkins gitlab maven tomcat">
+<meta name="twitter:title" content="Mybatis 初次了解">
+<meta name="twitter:description" content="what? orm持久层框架的佼佼者 object relational mapping   实现sql和java代码分离 优秀功能 动态sql 缓存 插件pageHelper    数组为参数 sql中使用in，查询的值封装到数组中 批量操作数据，操作的数据封装到数组中  mybatis参数处理方式 单参数 自动进行参数赋值 #{id}     多参数 JavaBean传递参数 Map接口 注解">
   
     <link rel="alternate" href="/atom.xml" title="知乎者爷" type="application/atom+xml">
   
@@ -69,12 +69,16 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-持续集成-持续部署" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-Mybatis-初次了解" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/02/07/持续集成-持续部署/" class="article-date">
-  <time datetime="2019-02-07T06:58:21.000Z" itemprop="datePublished">2019-02-07</time>
+    <a href="/2019/02/10/Mybatis-初次了解/" class="article-date">
+  <time datetime="2019-02-10T05:08:08.000Z" itemprop="datePublished">2019-02-10</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mybatis/">mybatis</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -83,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      持续集成&amp;持续部署
+      Mybatis 初次了解
     </h1>
   
 
@@ -91,38 +95,68 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="持续集成-amp-持续部署"><a href="#持续集成-amp-持续部署" class="headerlink" title="持续集成&amp;持续部署"></a>持续集成&amp;持续部署</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
-<li>jenkins</li>
-<li>gitlab</li>
-<li>maven</li>
-<li>tomcat</li>
+        <h2 id="what"><a href="#what" class="headerlink" title="what?"></a>what?</h2><ul>
+<li>orm持久层框架的佼佼者<ul>
+<li>object relational mapping</li>
 </ul>
-
+</li>
+<li>实现sql和java代码分离</li>
+<li>优秀功能<ul>
+<li>动态sql</li>
+<li>缓存</li>
+<li>插件pageHelper</li>
+</ul>
+</li>
+</ul>
+<h2 id="数组为参数"><a href="#数组为参数" class="headerlink" title="数组为参数"></a>数组为参数</h2><ul>
+<li>sql中使用in，查询的值封装到数组中</li>
+<li>批量操作数据，操作的数据封装到数组中</li>
+</ul>
+<h2 id="mybatis参数处理方式"><a href="#mybatis参数处理方式" class="headerlink" title="mybatis参数处理方式"></a>mybatis参数处理方式</h2><ul>
+<li>单参数<ul>
+<li>自动进行参数赋值<ul>
+<li>#{id}</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多参数<ul>
+<li>JavaBean传递参数</li>
+<li>Map接口<ul>
+<li>注解@param</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>集合<ul>
+<li>Collection、List、Array，也会封装Map，但是有一定规则</li>
+</ul>
+</li>
+</ul>
+<h2 id="动态sql"><a href="#动态sql" class="headerlink" title="动态sql"></a>动态sql</h2><ul>
+<li>foreach</li>
+<li>tree</li>
+<li>where</li>
+</ul>
+<h2 id="批量插入"><a href="#批量插入" class="headerlink" title="批量插入"></a>批量插入</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhzye.github.io/2019/02/07/持续集成-持续部署/" data-id="cjru9t4jm0039r360fva53fgg" class="article-share-link">Share</a>
+      <a data-url="http://zhzye.github.io/2019/02/10/Mybatis-初次了解/" data-id="cjryg722g003ar360m3n20txu" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mybatis/">mybatis</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2019/02/10/Mybatis-初次了解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Mybatis 初次了解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/07/nginx/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/02/07/持续集成-持续部署/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">nginx</div>
+      <div class="article-nav-title">持续集成&amp;持续部署</div>
     </a>
   
 </nav>

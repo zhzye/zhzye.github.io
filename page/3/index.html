@@ -70,6 +70,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java-thread" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/30/java-thread/" class="article-date">
+  <time datetime="2019-01-30T14:47:45.000Z" itemprop="datePublished">2019-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/30/java-thread/">java线程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="points"><a href="#points" class="headerlink" title="points"></a>points</h2><ul>
+<li>进程</li>
+<li>线程</li>
+<li>cpu时间片轮转，达到同时运行多个进程、多个线程</li>
+<li>什么是多线程</li>
+<li>线程的创建</li>
+<li>线程的状态和生命周期</li>
+<li>线程调度</li>
+<li>同步和死锁</li>
+</ul>
+<h2 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h2><ul>
+<li>创建Thread类，或者一个Thread子类的对象</li>
+<li>创建一个实现Runnable接口的类的对象</li>
+</ul>
+<h3 id="Thread-java-lang"><a href="#Thread-java-lang" class="headerlink" title="Thread@java.lang"></a><a href="mailto:Thread@java.lang" target="_blank" rel="noopener">Thread@java.lang</a></h3><ul>
+<li>创建的方法<ul>
+<li>Thread()</li>
+<li>Thread(String name)</li>
+<li>Thread(Runnable target)</li>
+<li>Thread(Runnable target, String name) </li>
+</ul>
+</li>
+<li>重要方法<ul>
+<li>public void run()<ul>
+<li>线程执行体</li>
+</ul>
+</li>
+<li>public void start()<ul>
+<li>启动</li>
+</ul>
+</li>
+<li>public static void sleep(long m)<ul>
+<li>休眠<ul>
+<li>毫秒</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>public void join() - 优先执行，抢占资源</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zhzye.github.io/2019/01/30/java-thread/" data-id="cjrk8sj680001r360c28xkoms" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread/">thread</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/30/hello-world/" class="article-date">
